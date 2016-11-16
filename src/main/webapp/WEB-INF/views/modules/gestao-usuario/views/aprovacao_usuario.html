@@ -1,0 +1,85 @@
+<div class="bgfull1" data-scroll-top>
+  <!-- Section telas_internas 
+ ================================================== -->
+  <section id="menutabprincipal" class="menutabprincipal3 ">
+    <div class="container ">
+       <div class="breadcrub">
+                    <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                         <senac-breadcrumb></senac-breadcrumb>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                         <senac-busca-textual></senac-busca-textual>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+    </div>
+  </section>
+
+  <div class="container nav_internas ">
+    <div class="col-md-12 offset-4 ">
+      <header class="section-header margtop20 ">
+        <h2 class="section-title normal ">{{'T_APROVACAO_USUARIO' | translate}}</h2>
+        <div class="spacer_left margbottom20 "></div>
+      </header>
+      <div class="col-md-12 offset-0 padding5 margbottom10 ">
+        <div class="margtop20 margbottom10">
+          <show-message data-show="globalMessage.show" data-nivel="globalMessage.nivel" data-text="globalMessage.text" >
+          </show-message>
+          <show-message data-show="localMessage.show" data-nivel="localMessage.nivel" data-text="localMessage.text" >
+          </show-message>
+        </div>
+        <div class="table-responsive mt-6">
+          <table class="table table-bordered table-hover table-striped">
+            <thead>
+              <tr class="filters">
+                <th class="small">
+                  {{'LBL_NOME' | translate}}
+                </th>
+                <th class="small">
+                  {{'LBL_CPF' | translate}}
+                </th>
+                <th class="small">
+                  {{'LBL_DEPARTAMENTO' | translate}}
+                </th>
+                <th class="small center">
+                  {{'LBL_DT_SOLICITACAO' | translate}}
+                </th>
+                <th class="small center">
+                  {{'LBL_APROVAR' | translate}}
+                </th>
+                <th class="small center">
+                  {{'LBL_REPROVAR' | translate}}
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr data-ng-repeat="solicitacao in solicitacoesAcesso track by $index">
+                <td class="titulo_table" data-ng-bind="solicitacao.usuario.nome"></td>
+                <td data-ng-bind="solicitacao.usuario.cpf"></td>
+                <td data-ng-bind="solicitacao.departamento.nome"></td>
+                <td class="center">{{solicitacao.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+                <td class="center">
+                  <a data-ng-href="{{systemUri.gestaoUsuarioEdicao(solicitacao.usuario.id)}}" title="" class="tooltips btn-xs btn-success padding5 aprovar" data-placement="left" data-original-title="Aprovar">
+                    <i class="fa fa-check  size10"></i> <span class="hidden-inline-xs">{{'LBL_APROVAR' | translate}}</span>
+                  </a>
+                </td>
+                <td class="center">
+                  <button class="tooltips  btn-xs  btn-danger  padding5 reprovar" data-placement="left" data-original-title="Reprovar" data-ng-click="reprovarSolicitacao(solicitacao.usuario, $index)">
+                    <i class="fa fa-remove  size10"></i> <span class="hidden-inline-xs"> {{'LBL_REPROVAR' | translate}}</span>
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="clearfix "></div>
+        <div class="divider "></div>
+
+      </div>
+    </div>
+  </div>
+</div>

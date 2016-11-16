@@ -1,0 +1,80 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas">
+    <div class="col-md-12 offset-0 ">
+        <div class="col-md-12 offset-0">
+            <senac-apresentacao id="PLANO_VENDA"></senac-apresentacao>
+        </div>
+        <div class="divider"></div>
+        <div data-ng-hide='lancamentoProjecao'>
+            <header class="section-header margtop20 ">
+                <h2 class="section-title normal"> Projeções de vendas</h2>
+                <div class="spacer_left margbottom20"></div>
+            </header>
+
+            <div class="col-md-12 offset-0 degrade shadow padding5 margbottom10">
+                <div class="col-md-5 padding10 ">
+                    <div class="col-sm-12 margbottom10">
+                        <label>DR</label>
+                        <select class="form-control margtop5"
+                                    data-ng-options="departamento.nome for departamento in ::departamentosRegionais track by departamento.id" data-ng-model="drSelecionado" data-ng-change="buscarPolos(drSelecionado)"
+                                    required name="departamento">
+                            <option value="" label="{{'LBL_CBX_SELECIONE' | translate}}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5 padding10 ">
+                    <div class="col-sm-12 margbottom10">
+                        <label>Polo</label>
+                        <select class="form-control margtop5" data-ng-disabled="!drSelecionado" data-ng-required="nivelDepartamento === 'POLO'"  name="polo"
+                            data-ng-options="polo.nome for polo in polos track by polo.id" data-ng-model="poloSelecionado">
+                            <option value="" label="{{'LBL_CBX_SELECIONE' | translate}}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2 margtop30"> 
+                    <button class="btn bluebtn btn-block right caps margbottom10 " data-ng-click="buscarProjecoes()" data-ng-disabled="!drSelecionado">Filtrar</button></div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div data-ng-show="exibirResultados">
+                <div class="margtop20">
+                    <div class="col-md-6 size16 blue"> <span class="lato bold mt10">{{projecoes.length}} Resultados</span></div>
+                    <div class="col-md-6 offset-0" data-ng-if="vigencias"> 
+                        <a class="btn-search5 right caps margbottom10" data-ng-href="{{systemUri.planoVendaLancamento()}}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Lançar Projeção</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="table-responsive margtop10 ">
+                    <table class="table table-bordered table-hover table-striped  shadow size12">
+                        <thead>
+                            <tr>
+                                <th class=" size14  center caps"> Polo</th>
+                                <th class=" size14  center caps">Livres</th>
+                                <th class=" size14  center caps">Técnico</th>
+                                <th class=" size14  center caps">Graduação</th>
+                                <th class=" size14  center caps">Pós-Graduação</th>
+                                <th class=" size14  center caps">Extensão</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="projecao in projecoes track by $index">
+                                <td class="center" data-ng-bind="projecao.departamento.nome" />
+                                <td class="center" data-ng-bind="projecao.quantidadeLivre" />
+                                <td class="center" data-ng-bind="projecao.quantidadeTecnico" />
+                                <td class="center" data-ng-bind="projecao.quantidadeGraduacao" />
+                                <td class="center" data-ng-bind="projecao.quantidadePos" />
+                                <td class="center" data-ng-bind="projecao.quantidadeExtensao" />
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-if='lancamentoProjecao'>
+           <ng-include src="'/extranetead-portal/partials/venda/tabela_lancamento_projecao'"></ng-include>
+        </div>
+    </div>
+</div>

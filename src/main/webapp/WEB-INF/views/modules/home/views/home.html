@@ -1,0 +1,194 @@
+<div data-ng-controller="HomeController" data-scroll-top>
+<section id="banner">
+  <div class="banner_bg">
+    <div class="container">
+      <div class="row margtop15">
+        <!-- Bem Vindo / Busca-->
+
+        <!--  Left Banner-->
+        <div class="col-lg-9 col-md-9">
+          <!--  Carousel Banner -->
+          <div class="carousel slide" data-ng-controller="BannerController">
+
+            <uib-carousel active="active" interval="tempoTransicao">
+              <uib-slide ng-repeat="imagemBanner in ::bannerSelecionado.imagemBanners track by $index" index="$index">
+                <img data-ng-src="{{apiUrl + imagemBanner.imagem.linkDownload}}" style="margin:auto;" class="imgfull"/>
+                <a data-ng-if="imagemBanner.link" data-ng-href="{{imagemBanner.link}}" class="bluebtn caps center "><i class="fa fa-plus size11  margright5" aria-hidden="true"></i> <span class="hidden-xs">Saiba Mais</span></a>
+              </uib-slide>
+            </uib-carousel>
+
+
+            <!-- End Indicators -->
+            <!-- Controls -->
+       
+            <!-- End Controls -->
+            <hr class="transition-timer-carousel-progress-bar" />
+          </div>
+          <!-- End CarouselBanner -->
+
+        </div>
+        <!--  End Left Banner-->
+
+        <!--  Right Informes -->
+        <div class="col-md-3 col-lg-3">
+          <div class="degrade informe_profile profile">
+             <div class="top_informe "> 
+            <div class="col-md-2 col-xs-2 center "> 
+              <i class="fa fa-bell-o lgrey size30 margtop25" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-10 col-xs-10  ">
+              <div class="profile-desk ">
+                <h3 class="blue margtop30 size16 margleft15">  <b>Últimos Avisos</b></h3> 
+              </div>
+            </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="informes"></div>
+            <div class="tamanho_aviso">
+
+                <div data-ng-repeat="aviso in avisos" class="ultimo_avisos" >
+                  <div class="col-md-2  col-sm-2 col-xs-2 center padding5 lh2">
+                    <span class="size16 bold orange mt3">{{(aviso.dataPublicacao | date:'dd')}}</span>
+                    <br>
+                    <span class="dark size11 caps">{{(aviso.dataPublicacao | date:'MMM')}}</span>
+                  </div>
+
+                  <div class="col-md-10 col-sm-10 col-xs-10 bordertype2 offset-4"> 
+                    <div class="size10 lh10 mt5 t_aviso" ><a data-ng-click="abrirModalAviso(aviso)" class="cpointer blue">{{aviso.chamada}} </a> </div> 
+                  </div>
+                  <div class="clearfix"></div>   
+                    <div class="line3"></div>                  
+                </div>
+            
+                 <!--  Mensagem para aparecer quando não apresentar nenhum aviso -->
+                <div data-ng-show="avisos.length === 0" >
+                <div class="center padding5 margtop30 margbottom20 grey size14 lh2 light">{{"MSG_SEM_AVISO" | translate}}</div>
+              </div>
+              <!--  Fim Mensagem para aparecer quando não apresentar nenhum aviso -->
+         
+          </div>
+             <div class="clearfix"></div>
+            <div class="line3"></div>
+            <div class="bgcinza padding13 center">
+              <a class="roboto  bold blue" data-ng-href="{{systemUri.avisos()}}">VEJA TODOS OS AVISOS</a>
+            </div>
+          <!--  End Informe-profile-->
+        </div>
+        <!--  End Right Informes-->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== FIm Banner  ====-->
+<section id="search" class="full-search search">
+  <div class="container">
+    <div class="col-md-9 col-lg-9 col-sm-8  size14  textshadow slim  offset-0">
+
+      <header class="section-header margtop15">
+        <h2 class="section-title size22">Extranet <span class="orange">EAD</span> </h2>
+      </header>
+    </div>
+     <div class="col-md-3 col-lg-3 col-sm-4 offset-3 margtop10 ">
+      <senac-busca-textual></senac-busca-textual>
+      </div>
+  </div>
+  <!-- Fim Bem Vindo / Busca-->
+
+</section>
+
+<!-- ==== Section EAD ==== -->
+<section id="extranetead" class="full-white extranetead">
+  <div class="container">
+<div class="aboutarrow"></div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9  textjustify size12 ">
+        <div class="">
+          
+          <div id="conteudo"></div>
+          <br>
+
+        </div>
+      </div>      
+      <div class="col-lg-3 col-md-3" data-ng-controller="MesController">
+        <ng-include src="'/extranetead-portal/partials/home/calendario_mes'"/>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ==== FIm Section EAD ==== -->
+<!-- ==== Section Destaques ==== -->
+<section id="destaque" class="destaque full-grey" data-ng-controller="NoticiaDestaqueController">
+  <div class="container">
+
+    <header class="section-header">
+      <h2 class="section-title textcenter"><span>Destaques</span></h2>
+      <div class="spacer"></div>
+      <div class="line3"></div>
+    </header>
+    <div class="row margtop20">
+      <div class="col-md-3 margbottom40 offset-1" data-ng-repeat="noticaDestaque in ::noticiasDestaque track by $index">
+        <div class="boxshadow ">
+          <img src="{{apiUrl + noticaDestaque.imagem.linkDownload}}" class="fwimg" alt="">
+          <div class="bscontainer">
+              <div class="titulo_destaque"><a title="Notícias" data-ng-href="{{systemUri.noticiaDetalhe(noticaDestaque.id)}}"><h3 class="lato bold caps textcenter dark" data-ng-bind="noticaDestaque.titulo"></h3></a></div>
+            <hr>
+            <div  id="txt_destaque" ><span  data-ng-bind="noticaDestaque.chamada" ></span></div> 
+            <div class="clearfix"></div>
+
+            <div class="center margtop15 margbottom10">
+              <a class="bluebtn btn caps " title="Notícias" data-ng-href="{{systemUri.noticiaDetalhe(noticaDestaque.id)}}">
+                <i class="fa fa-plus size11 margright5" aria-hidden="true"></i> Leia Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ==== FIm Section Destaques ==== -->
+<!-- ==== Section Noticias  ==== -->
+<section id="noticia" class="full-white2  noticia" data-ng-controller="NoticiaRecenteController">
+
+  <div class="container">
+
+    <header class="section-header">
+      <h2 class="section-title textcenter"><span>Últimas Notícias</span></h2>
+      <div class="spacer"></div>
+      <div class="line3"></div>
+    </header>
+    <div class="row margtop15">
+
+      <!-- Noticias -->
+      <div class="col-md-3 " data-ng-repeat="noticaRecente in ::noticiasRecentes track by $index">
+        <article class="education">
+          <header>
+            <div class="titulo_destaque">
+                <a title="Notícias" data-ng-href="{{systemUri.noticiaDetalhe(noticaRecente.id)}}">
+                <h3 class="title blue" data-ng-bind="noticaRecente.titulo"></h3>
+                </a>
+            </div>
+          </header>
+          <div  id="txt_destaque" ><span class="size11" data-ng-bind="noticaRecente.chamada"></span></div>
+          <a class="center lblue" title="Notícias" data-ng-href="{{systemUri.noticiaDetalhe(noticaRecente.id)}}">
+              Leia Mais <i class="fa fa-angle-double-right slim"></i>
+          </a>
+        </article>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="divider">
+        <!-- divider -->
+
+      </div>
+      <div class="col-md-12 size18 center grey2 hpadding50c  margbottom40">
+        <a class=" bluebtn  btn-lg caps center margtop20" title="Todas Notícias" data-ng-href="{{systemUri.noticias()}}"><i class="fa fa-file-text size14  margright5" aria-hidden="true"></i> VEJA <b>TODAS NOTÍCIAS</b></a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>

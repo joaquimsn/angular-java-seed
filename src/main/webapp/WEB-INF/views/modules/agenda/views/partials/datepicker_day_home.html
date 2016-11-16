@@ -1,0 +1,53 @@
+
+<table class="uib-daypicker calendar_home responsive-calendar  degrade margtop10 shadow" role="grid" aria-labelledby="{{::uniqueId}}-title" aria-activedescendant="{{activeDateId}}">
+  <thead>
+    <tr>
+      <th>
+        <button type="button" class="btn btn-default_calendar btn-sm pull-left uib-left" ng-click="move(-1)" tabindex="-1"><i class="fa fa-angle-double-left size30 orange"></i></button>
+      </th>
+      <th colspan="{{::5 + showWeeks}}">
+        <button id="{{::uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="btn btn-default_calendar btn-sm uib-title" tabindex="-1"><span class="size18">{{title}}</span></button>
+      </th>
+      <th>
+        <button type="button" class="btn btn-default_calendar btn-sm pull-right uib-right" ng-click="move(1)" tabindex="-1">
+        <i class="fa fa-angle-double-right size30 orange"></i></button>
+      </th>
+    </tr>
+    <tr>
+      <th ng-if="showWeeks" class="text-center "></th>
+      <th ng-repeat="label in ::labels track by $index" class="text-center dayheader"><small aria-label="{{::label.full}}">{{::label.abbr}}</small></th>
+    </tr>
+  </thead>
+  <tbody class="">
+    <tr class="uib-weeks" ng-repeat="row in rows track by $index">
+      <td ng-if="showWeeks" class=""><em>{{ weekNumbers[$index] }}</em></td>
+      <td ng-repeat="dt in row" class="uib-day text-center tdcalendar " role="gridcell" id="{{::dt.uid}}" ng-class="::dt.customClass">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <button data-toggle="dropdown" data-ng-click="dt.date.openModal(dt.date.eventos)" data-ng-disabled="dt.date.eventos.length === 0" class="btncalendario dropdown-toggle" uib-is-class="
+            'btn-info' for selectedDt,
+            'active day_active' for activeDt
+            on dt" ng-disabled="::dt.disabled" tabindex="-1"><span ng-class="::{'text-muted': dt.secondary, '': dt.current}">{{::dt.label}}</span></button>
+
+            <ul class="dropdown-menu" data-ng-show="dt.date.eventos.length > 0">
+
+              <li>
+                <div class="row dropwidth02">
+                  <ul class="droplist col-md-12 evento_home" data-ng-repeat="evento in ::dt.date.eventos track by $index">
+                    <li class="clearfix">
+                     <div class=" blue bold caps">{{evento.agenda.modalidades[0].titulo}}</div> 
+                      <h5 class="title  orange ">{{evento.title}}</h5>
+                      <div class="info margtop5">
+                        <p class="desc size11 lh1b">{{evento.agenda.descricao}}</p> 
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

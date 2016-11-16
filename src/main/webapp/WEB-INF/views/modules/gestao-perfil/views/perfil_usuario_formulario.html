@@ -1,0 +1,103 @@
+<div class="bgfull1" data-scroll-top>
+  <section id="telas_internas" class="telas_internas">
+    <article>
+
+      <section id="menutabprincipal" class="menutabprincipal3">
+        <div class="container">
+          <article>
+            <div class="col-md-12 offset-0">
+               <div class="breadcrub">
+                    <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                         <senac-breadcrumb></senac-breadcrumb>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                         <senac-busca-textual></senac-busca-textual>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </article>
+      </section>
+
+      <div class="container nav_internas margbottom40" style="min-height: 500px">
+
+        <header class="section-header margtop15 ">
+          <h2 class="section-title normal">{{'T_EDITAR_PERFIL' | translate}}</h2>
+          <div class="spacer_left margbottom20"></div>
+        </header>
+
+        <div class="col-md-12 degrade">
+          <div class="row  shadow">
+
+            <div class="panel-body col-md-12">
+
+              <div class="row">
+
+                <div class="col-md-12 personal-info">
+                  <div class=" margbottom10">
+                    <show-message data-show="globalMessage.show" data-nivel="globalMessage.nivel" data-text="globalMessage.text" >
+                    </show-message>
+                    <show-message data-show="localMessage.show" data-nivel="localMessage.nivel" data-text="localMessage.text" >
+                    </show-message>
+                  </div>
+                  <form class="form-horizontal" name="formUsuario">
+                    <div class="form-group">
+                      <label class="col-lg-12">{{'LBL_NOME' | translate}}:</label>
+                      <div class="col-lg-12">
+                        <input class="form-control input-sm" type="text" required="" placeholder="Nome" name="nome" data-ng-model="usuario.nome" required minlength="3" maxlength="100" />
+			                  <div data-ng-messages="formUsuario.nome.$error" data-ng-if="formUsuario.nome.$touched && !submitted">
+			                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+			                  </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-lg-12">{{'LBL_EMAIL' | translate}}:</label>
+                      <div class="col-lg-12">
+                        <input class="form-control input-sm" type="email" required="" placeholder="E-mail" name="email" data-ng-model="usuario.email" required minlength="5" maxlength="128" data-repeat="128" />
+				                <div data-ng-messages="formUsuario.email.$error" data-ng-if="formUsuario.email.$touched && !submitted">
+				                	<div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+				                </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-lg-12">{{'LBL_CPF' | translate}}:</label>
+                      <div class="col-lg-12">
+                        <input class="form-control" data-ng-model="usuario.cpf" type="text" mask="999.999.999-99" disabled cpf/>
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+
+              </div>
+   <div class="clearfix"></div>
+              <div class="right">
+                <a back class="btn btn-default margright10 clearfix" style="padding: 8px 15px;"><i class="fa fa-remove"></i> {{'BTN_CANCELAR' | translate}}</a>
+                <button class="btn btn-primary  bluebtn" data-ng-disabled="formUsuario.$invalid"
+                  data-ng-click="alterar(usuario)">
+                	<i class="fa fa-save"></i> {{'BTN_ALTERAR' | translate}}
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="divider">
+          <!-- divider -->
+
+        </div>
+
+    </article>
+  </section>
+  </div>
+
+</div>

@@ -1,0 +1,118 @@
+<section id="menutabprincipal" class="menutabprincipal3">
+  <div class="container">
+    <article>
+      <div class="col-md-12 offset-0">
+        <div class="breadcrub">
+            <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                <senac-breadcrumb></senac-breadcrumb>
+            </div>
+            <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                <senac-busca-textual></senac-busca-textual>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+      </div>
+  </article>
+  </div>
+</section>
+<div class="container nav_internas" data-scroll-top>
+  <div class="">
+    <div class="col-md-12 offset-0">
+      <div class="  offset-0">
+        <senac-apresentacao id="CAPACITACAO"></senac-apresentacao>
+      </div>
+    </div>
+    <!-- /.section-description -->
+
+    <div class="clearfix"></div>
+    <div class="divider">
+      <!-- divider -->
+
+    </div>
+
+    <div class="col-md-12  offset-0">
+      <div class=" offset-0">
+        <senac-apresentacao id="AGENDA"></senac-apresentacao>
+      </div>
+      <div class="clearfix"></div>
+      <div class="divider">
+      </div>
+
+      <!-- Responsive calendar - START -->
+      <div class="col-md-12 offset-1" data-ng-controller="CalendarioController as vm">
+
+        <div class="row ">
+
+          <div class="col-md-12 margtop10">
+
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="bold center size20 blue capitalize ">{{calendarTitle}}</div>
+
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="line4"></div>
+
+        <div class="btn-group left">
+
+          <button class="btn btn-calendar btn-primary" mwl-date-modifier date="viewDate" decrement="calendarView">
+						<i class="glyphicon glyphicon-chevron-left"></i>
+					</button>
+
+          <button class="btn btn-calendar btn-info" mwl-date-modifier date="viewDate" increment="calendarView">
+						<i class="glyphicon glyphicon-chevron-right"></i>
+					</button>
+
+        </div>
+
+        <button class="btn btn-calendar capitalize btn-default margleft15" mwl-date-modifier date="viewDate" set-to-today>
+						Hoje
+				</button>
+					
+
+					 <div class="btn-group calendar_opcoes right ">
+						<!-- <label class="btn btn-calendar btn-primary " ng-model="calendarView " uib-btn-radio=" 'year' ">Ano</label> -->
+						<label class="btn btn-calendar btn-primary " ng-model="calendarView " uib-btn-radio=" 'month' ">M<span class="hidden-inline-xs ">ês</span></label>
+						<label class="btn btn-calendar btn-primary " ng-model="calendarView " uib-btn-radio=" 'week' ">S<span class="hidden-inline-xs ">emana</span></label>
+						<label class="btn btn-calendar btn-primary " ng-model="calendarView " uib-btn-radio=" 'day' ">D<span class="hidden-inline-xs ">ia</span></label>
+					</div> <div class="clearfix "></div><div class="line4 "></div>
+
+			 <div class="calendar_scroll"> 
+					<div class="calendar_mobile"> 
+						<mwl-calendar 
+							events="events " 
+							view="calendarView "
+							view-date="viewDate " 
+							view-title="calendarTitle " 
+							cell-is-open="isCellOpen " 
+							on-event-click="eventClicked(calendarEvent); ">
+						</mwl-calendar>  
+				</div>
+			</div>
+			<!-- Responsive calendar - END --> 
+		</div>
+
+		<div class="clearfix "></div>
+		<div class="divider ">
+			<!-- divider -->
+
+		</div>
+
+		<div class="col-md-12 offset-0 ">
+			<senac-apresentacao id="ARQUIVOS "></senac-apresentacao>
+		</div>
+
+		<div class="divider ">
+			<!-- divider -->
+
+		</div>
+		<div class="col-md-12 size18 center grey2 hpadding50c margbottom40 ">
+			<a class=" bluebtn btn-lg caps center margtop20 " title="Todos os arquivos " data-ng-href="{{systemUri.arquivos()}} "><i class="fa fa-file-archive-o size14 margright5 " aria-hidden="true "></i> VEJA <b>TODOS ARQUIVOS</b></a>
+
+		</div>
+	</div>
+	<!-- /.section-description -->
+</div>

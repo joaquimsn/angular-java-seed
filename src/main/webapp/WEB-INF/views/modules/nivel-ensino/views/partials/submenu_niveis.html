@@ -1,0 +1,28 @@
+<section class="menu-secondary lato" data-scroll-top>
+    <div class="container">
+        <ul class="tabs_principal nav nav-pills nav-justified padding20 caps ">
+            <li role="presentation" data-ng-repeat="submenu in ::submenus track by $index">
+                <a data-submenu-selecionado data-ng-href="{{systemUri.niveisEnsino() + '/' + submenu.path}}" data-ng-click="setSubmenuSelecionado(submenu)">
+                    {{submenu.titulo}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section id="menutabprincipal" class="menutabprincipal3">
+    <div class="container">
+        <article>
+            <div class="col-md-12 offset-0">
+               <div class="breadcrub">
+                    <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                         <senac-breadcrumb></senac-breadcrumb>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                         <senac-busca-textual></senac-busca-textual>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+    </div>
+    </article>
+</section>

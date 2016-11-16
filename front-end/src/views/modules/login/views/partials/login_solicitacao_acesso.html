@@ -1,0 +1,112 @@
+<div class="modal-header">
+  <button type="button" class="close" data-ng-click="fechar()">&times</button>
+  <h2 class="modal-title">{{'T_SOLICITACAO_ACESSO' | translate}}</h2>
+</div>
+<div class="modal-body padding0">
+  <div class="clearfix"></div>
+	<form action="post" name="formSolicitacaoAcesso">
+	  <div class="col-md-12   degrade shadow padding10 margbottom10">
+	    <div class="col-md-5 col-sm-5 margbottom10 offset-0">
+
+	      <label>{{'LBL_SELECAO_NIVEL_DR' | translate}}</label>
+	      <div class="clearfix "></div>
+	      <label class="btn btn-default ">
+	        <input name="niveDr" value="DR" data-ng-model="nivelDepartamento" type="radio" data-ng-change="resetSelecaoDepartamento(nivelDepartamento)"> DR
+	      </label>
+	      <label class="btn btn-default ">
+	        <input name="niveDr" type="radio" data-ng-model="nivelDepartamento"  value="POLO" data-ng-change="resetSelecaoDepartamento(nivelDepartamento)"> Polos
+	      </label>
+	    </div>
+	    <div class="col-md-3 col-sm-3 offset-1 ">
+	      <label>{{'LBL_UF' | translate}}</label>
+	      <select class="form-control margtop5" data-ng-disabled="!nivelDepartamento"
+					data-ng-options="departamento.nome for departamento in ::departamentosRegionais track by departamento.id" data-ng-model="drSelecionado" data-ng-change="buscarPolos(drSelecionado)"
+					required name="departamento">
+	        <option value="" label="{{'LBL_CBX_SELECIONE' | translate}}"></option>
+	      </select>
+
+	      <div data-ng-messages="formSolicitacaoAcesso.departamento.$error" data-ng-if="formSolicitacaoAcesso.departamento.$touched && !submitted">
+          <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+        </div>
+	    </div>
+
+	    <div class="col-md-4  col-sm-4 offset-1">
+	      <label>{{'LBL_POLO' | translate}}</label>
+	      <select class="form-control margtop5" data-ng-disabled="nivelDepartamento === 'DR' || !nivelDepartamento" data-ng-required="nivelDepartamento === 'POLO'"  name="polo"
+	      	data-ng-options="polo.nome for polo in polos track by polo.id" data-ng-model="poloSelecionado">
+	        <option value="" label="{{'LBL_CBX_SELECIONE' | translate}}"></option>
+	      </select>
+
+	      <div data-ng-messages="formSolicitacaoAcesso.polo.$error" data-ng-if="formSolicitacaoAcesso.polo.$touched && !submitted">
+          <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+        </div>
+	    </div>
+	    <div class="clearfix "></div>
+	  </div>
+
+	  <div class="clearfix "></div>
+
+	  <div class="col-md-4 col-sm-4 col-xs-12">
+	    <div class="form-group">
+	      <label class=" control-label blue">{{'LBL_CPF' | translate}}</label>
+	      <div >
+	        <input class="form-control input-sm" type="text" placeholder="CPF" name="cpf" data-ng-model="usuarioSolicitacao.cpf" clean="true" required restrict="reject" data-mask="999.999.999-99" data-cpf
+	        data-ng-blur="buscarUsuarioPorCpf(usuarioSolicitacao.cpf)"/>  
+
+          <div data-ng-messages="formSolicitacaoAcesso.cpf.$error" data-ng-if="formSolicitacaoAcesso.cpf.$touched && !submitted">
+            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+          </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="col-md-8 col-sm-8 ">
+	    <div class="form-group">
+	      <label class=" control-label blue">{{'LBL_NOME' | translate}}</label>
+	      <div>
+	        <input class="form-control input-sm" type="text" required="" placeholder="Nome" name="nome" data-ng-model="usuarioSolicitacao.nome" required minlength="3" maxlength="100" />
+          <div data-ng-messages="formSolicitacaoAcesso.nome.$error" data-ng-if="formSolicitacaoAcesso.nome.$touched && !submitted">
+            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+          </div>
+	      </div>
+	    </div>
+	  </div>
+    <div class="clearfix"></div>
+	  <div class="col-md-4 col-sm-4">
+	    <div class="form-group">
+	      <label class=" control-label blue">{{'LBL_CARGO' | translate}}</label>
+	      <div>
+	        <input class="form-control input-sm" type="text" required="" placeholder="Cargo" name="cargo" data-ng-model="usuarioSolicitacao.cargo" clean="true" required maxlength="60" minlength="3" />
+
+          <div data-ng-messages="formSolicitacaoAcesso.cargo.$error" data-ng-if="formSolicitacaoAcesso.cargo.$touched && !submitted">
+            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+          </div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-md-8 col-sm-8">
+	    <div class="form-group">
+	      <label class=" control-label blue">{{'LBL_EMAIL' | translate}}</label>
+	      <div class="">
+	        <input class="form-control input-sm" type="email" required="" placeholder="E-mail" name="email" data-ng-model="usuarioSolicitacao.email" required minlength="5" maxlength="128" data-repeat="128" />
+          <div data-ng-messages="formSolicitacaoAcesso.email.$error" data-ng-if="formSolicitacaoAcesso.email.$touched && !submitted">
+            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+          </div>
+	      </div>
+	    </div>
+	  </div>
+	</form>	
+	<div class="clearfix"></div>
+	<div class="padding10">
+		<show-message data-show="globalMessage.show" data-nivel="globalMessage.nivel" data-text="globalMessage.text" >
+		</show-message>
+		<show-message data-show="localMessage.show" data-nivel="localMessage.nivel" data-text="localMessage.text" >
+		</show-message>
+	</div>
+  <div class="clearfix"></div>
+</div>
+<div class="modal-footer">
+  <button data-ng-click="fechar()" class="btn btn-default" >{{'BTN_CANCELAR' | translate}}</button>
+  <btuton class="btn bluebtn white" data-ng-disabled="formSolicitacaoAcesso.$invalid"
+  data-ng-click="solicitarAcesso(usuarioSolicitacao)">{{'BTN_ENVIAR' | translate}}</button>
+</div>

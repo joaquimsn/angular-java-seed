@@ -1,0 +1,54 @@
+<uib-accordion >
+  <uib-accordion-group is-open="false" class="" data-ng-repeat="docAgrupado in ::listaDocumentos">
+    <uib-accordion-heading>
+      <div class="nivel1">
+          <span>{{docAgrupado.modalidade.titulo}}</span> <span class="collapsearrow"></span>
+      </div>                            
+    </uib-accordion-heading>
+      <div>
+      <uib-accordion id="{{docCategoria + $index}}">                            
+        <uib-accordion-group is-open="false" data-ng-repeat="docCategoria in docAgrupado.categorias">
+            <uib-accordion-heading >
+              <div class="nivel2">
+                  <span>{{docCategoria.categoria}}</span> <span class="collapsearrow"></span>
+              </div>
+            </uib-accordion-heading>
+              <div >
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped slim ">
+                    <thead>
+                      <tr class="filters">
+                        <th class=" size14  center size16"><i class="fa fa-list-ol "></i> </th>
+                        <th class=" size14  center caps"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Arquivos</th>
+                        <th class=" size14  center caps"><i class="fa fa-calendar "></i> Data publicação</th>                                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-ng-repeat="doc in docCategoria.listaDocumento">
+                        <td class="center ">{{$index + 1}}</td>
+                        <td class=""> <a ng-href="{{apiUrl + doc.linkDownload}}" senac-download-signature target="_blank">{{doc.titulo}}</a> </td>
+                        <td class="">{{doc.dataPublicacao | date:'dd/MM/yyyy'}}</td>                   
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </uib-accordion-group> 
+          </uib-accordion>                            
+      </div>                            
+  </uib-accordion-group>                 
+</uib-accordion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+<section class="menutabprincipal3" >   
+  <div class="container ">
+    <article> 
+     <div class="col-md-12 offset-0 ">   
+      <div class="breadcrub ">
+        <div class="col-md-9 margtop10 ">
+          <a class="homebtn left " data-ng-href="{{systemUri.home()}}"></a> 
+          <div class="left ">
+            <ul class="bcrumbs ">
+              <li><i class="fa fa-angle-double-right " aria-hidden="true "></i></li>
+              <li><a data-ng-href="{{systemUri.capacitacao()}}" class="active">Capacitação</a></li>
+            </ul>       
+          </div>
+        </div>
+        <div class="col-md-3 ">
+          <form class=" form-search " role="search ">  
+            <div class="form-group center "> 
+              <input type="text " class="form-control iconsearch " placeholder="Procurar ">   
+            </div>
+          </form> 
+        </div>
+        <div class="clearfix "></div>
+      </div>
+    </div>    
+  </div>
+</article>
+</section> 
+
+<div class="container nav_internas " >
+
+  <div class="clearfix "></div>
+  <!-- Corpo Tab -->
+  
+  <!-- Tab Estrategias de Vendas -->
+  <div > 
+
+   <div class="margtop20 "> 
+    
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 offset-0 ">
+    <h2 class="blue size22 " data-ng-bind="capacitacao.agenda.titulo"></h2>
+   
+     <div class="well well-sm">
+
+       <span class=" bold size13 "><i class="fa fa-map-marker "></i> {{capacitacao.departamento.nome}}</span> 
+        <span class="dark size13 margleft15 "><i class="fa fa-calendar "></i> {{capacitacao.agenda.dataInicio | date: 'dd/MM/yyyy'}}</span> 
+             <span class=" orange bold size13 margleft15"><i class="fa  "></i> {{capacitacao.agenda.modalidades[0].titulo}}</span> 
+      </div> 
+      <div class="clearfix "></div>
+
+   <div class="col-md-12 offset-0  textjustify ">
+     <div id="senacDetalheCapacitacao"></div> 
+  </div>   
+  </div>
+
+  </div>
+  <div class="clearfix "></div>
+  <div class="divider "></div><!-- divider -->
+
+  <div class="col-md-12 offset-0 margtop10 ">
+    <header class="section-header ">
+      <h5 class="size18 blue normal"> Público Alvo</h5>
+      <div class="spacer_left mt-10  "></div>
+    </header>
+    <span data-ng-bind="capacitacao.publicoAlvo"></span>
+  </div> 
+
+     <div class="col-md-12 offset-0 margtop10 ">
+        <header class="section-header ">
+       <h5 class="size18 blue normal">Contato</h5>
+       <div class="spacer_left mt-10  "></div>
+      </header>
+      <span data-ng-bind="capacitacao.contato"></span>
+    </div> 
+
+       <div class="col-md-12 offset-0 margtop10 ">
+        <header class="section-header ">
+        <h5 class="size18 blue normal"> Link</h5>
+       <div class="spacer_left mt-10  "></div>
+      </header>
+     <a data-ng-href="{{capacitacao.link}}" target="blank" class="blue "><i class="fa fa-external-link " aria-hidden="true "></i> {{capacitacao.link}}</a>
+    </div> 
+
+</div>
+
+<div class="clearfix "></div>
+
+
+</article> 
+</section>
+</div>

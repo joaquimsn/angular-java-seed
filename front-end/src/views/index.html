@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-ng-app="Extranetead-portal">
+
+<head>
+    <base href="/angular-java-seed">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="shortcur icon" href="/angular-java-seed/static/resources/app/favicon.ico" type="image/x-icon" />
+    <meta name="author" content="SENAC SP">
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/angular-java-seed/static/resources/app/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/angular-java-seed/static/resources/app/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/angular-java-seed/static/resources/app/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/angular-java-seed/static/resources/app/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/angular-java-seed/static/resources/app/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/angular-java-seed/static/resources/app/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/angular-java-seed/static/resources/app/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/angular-java-seed/static/resources/app/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/angular-java-seed/static/resources/app/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/angular-java-seed/static/resources/app/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/angular-java-seed/static/resources/app/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/angular-java-seed/static/resources/app/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/angular-java-seed/static/resources/app/favicon-16x16.png">
+    <link rel="manifest" href="/angular-java-seed/static/resources/app/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/angular-java-seed/static/resources/app/ms-icon-144x144.png">
+    <meta name="theme-color" content="#F19300">
+
+
+    <title>Extranet EAD Nacional</title>
+
+    <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="./static/styles/css/font-awesome-ie7.css" media="screen" /><![endif]-->
+    <!-- Font -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/angular-java-seed/static/resources/   css/bundle.css">
+    <!-- Bundle contendo todos os scripts -->
+    <script src="/angular-java-seed/static/js/app.js" type="text/javascript" charset="utf-8"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+ <![endif]-->
+</head>
+
+<body id="top" data-ng-cloak data-device-detector>
+    <div data-ng-if="(!showLogin && !showAlteracaoSenha)">
+        <ng-include src="'/angular-java-seed/expose/main/header'" data-ng-cloak></ng-include>
+        <div id="wrapper" class="bgfull1">
+            <section id="telas_internas" class="telas_internas">
+                <article>
+                    <div data-ng-view></div>
+                </article>
+            </section>
+        </div>
+        </section>
+        </section>
+        <ng-include src="'/angular-java-seed/expose/main/footer'" data-ng-cloak></ng-include>
+    </div>
+
+    <ng-include src="'/angular-java-seed/expose/login/login'" data-ng-if="showLogin"></ng-include>
+    <ng-include src="'/angular-java-seed/expose/login/alteracao_senha'" data-ng-if="showAlteracaoSenha"></ng-include>
+</body>
+
+</html>

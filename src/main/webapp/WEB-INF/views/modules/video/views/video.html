@@ -1,0 +1,77 @@
+<section id="telas_internas" class="telas_internas" data-scroll-top >
+    <section id="menutabprincipal" class="menutabprincipal3">
+        <div class="container">
+            <article>
+                <div class="col-md-12 offset-0">
+                    <div class="breadcrub">
+                        <div class="col-md-8 col-lg-9  col-sm-8 margtop10">
+                            <a class="homebtn left" data-ng-href="{{systemUri.home()}}"></a>
+                            <div class="left">
+                                <ul class="bcrumbs">
+                                    <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                                    <li><a data-ng-href="{{systemUri.video()}}" class="active">Videos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-sm-4 mt2">
+                            <form class=" form-search" role="search">
+                                <div class="form-group center ">
+                                    <input type="text" class="form-control iconsearch" placeholder="Procurar">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </article>                    
+        </div>
+    </section> 
+    <div class="container nav_internas margbottom40">
+        <header class="section-header margtop10 ">
+            <h2 class="section-title normal"> Vídeos</h2>
+            <div class="spacer_left margbottom20"></div>
+        </header>
+        <div class="clearfix"></div>
+        <div senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro">
+                <div class="col-md-12 offset-0 margtop10 margbottom10  "  data-ng-init="search = configurarSearchDefault(search)">
+                    <div data-ng-repeat="video in filtroResult.data track by $index">
+                        <div class="col-sm-3 col-lg-3 col-sm-6 offset-1">
+                            <div class="mt-15 padding10 border  margbottom10"  style="height:430px">  
+                                
+                              <article class="education ">
+                               <header>
+                                 <h3 class="title dark ng-binding mt-10">{{video.titulo}}</h3>
+                                 
+                                 <p class="size11 grey mt-5">
+                                   <i class="fa fa-calendar"></i>
+                                   <span>
+                                         {{(video.dataCadastro | date:"dd 'de '")}}
+                                   </span>  
+                                  <span class="capitalize">
+                                     {{(video.dataCadastro | date:"MMMM, yyyy")}}
+                                  </span> 
+                                </p>  </header>
+                            <img src="{{apiUrl + video.imagemThumbnail.linkDownload}}" alt="" class="fwimg pointer" data-ng-click="abrirModalVideo(video)">
+                              <span class="opensans size12 orange">Clique na imagem para ver o vídeo</span>
+
+                              <p class="size11 grey margtop10">{{video.descricao}}</p>
+                            
+                              <a data-ng-href="{{apiUrl + video.linkDownload}}" senac-download-signature class="btn-grey lblue right margbottom10 margtop10" data-ng-show="video.linkDownload" target="_blank">Download</a> 
+                            </article>
+
+
+                          <div class="clearfix"></div>
+
+                        </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-12 center" data-senac-paginacao>
+                  <uib-pagination boundary-links="true" total-items="filtroResult.totalCount" items-per-page="filtroResult.maxPageSize" ng-model="pagina" 
+                                 ng-change="trocarPagina()" num-pages class="pagination-sm" 
+                  previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                  </uib-pagination>
+                </div>
+        </div>
+    </div>
+</section>

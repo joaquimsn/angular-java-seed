@@ -1,0 +1,42 @@
+<section id="menutabprincipal" class="menutabprincipal3">
+  <div class="container">
+    <article>
+      <div class="col-md-12 offset-0">
+        <div class="breadcrub">
+          <senac-breadcrumb></senac-breadcrumb>
+          <senac-busca-textual></senac-busca-textual>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+  </div>
+  </article>
+</section>
+
+<div class="container nav_internas" style="min-height: 500px">
+  <div class="margtop20">
+    <div class="col-md-12 offset-0 textjustify slim size13 ">
+      <div class="col-md-8 textjustify slim  ">
+        <senac-apresentacao id="ARQUIVOS"></senac-apresentacao>
+      </div>
+
+    </div>
+    <div class="clearfix"></div>
+    <div class="divider">
+      <!-- divider -->
+    </div>
+
+    
+    <div class="col-md-12 offset-0 grey slim">
+      <!-- Menu Collapse -->
+      <div  class="acordion_senac" ng-init="carregarDocumentos('capacitacao')">
+        <ng-include src="'/extranetead-portal/partials/capacitacao/accordion_arquivos'">
+        </ng-include>
+        <!-- Fim Collapse 2 -->
+        <div class="clearfix"></div> 
+
+      </div>
+      <!-- Fim tab-pane -->
+      <!-- Fim col-md-12 Tabs -->
+    </div>
+  </div>
+</div>

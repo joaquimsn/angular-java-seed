@@ -1,0 +1,293 @@
+/*!
+ * Senac - Escola de Liderança
+ * Designer: Rodrigo Alves dos Santos
+ */
+
+ @media (max-width: 420px) {
+
+  .nav_internas , .tabs_internas .tabs-sub .panel-body{    
+   padding-right: 5px !important;
+    padding-left: 5px !important;}
+
+
+
+    .btn-calendar {
+
+    padding: 3px 10px;
+}
+
+   .carousel-inner img.imgfull {
+    height: 170px !important;
+}
+
+.bluebtn , .btn-grey , .menu-secondary .nav > li > a , .tabs_internas .nav > li > a{
+
+  padding: 10px !important;
+
+}
+
+.tabs_internas .nav-tabs.nav-justified > .active > a, .tabs_internas .nav-tabs.nav-justified > .active > a:hover, .tabs_internas .nav-tabs.nav-justified > .active > a:focus {
+
+
+    border: 1px solid #F29300 !important;
+
+}
+
+.carousel-inner .item button {
+    z-index: 1000;
+    margin-top: -35px;
+    float: right;
+    position: absolute;
+    right: 10px;
+}
+
+   /* Menu Principal */
+   .navbar-form .form-group { width: 70% !important;}
+   .logosenacmenu{ margin-top: -30px !important;}
+   .navbar-form { padding: 14px 15px !important; margin-top: 8px !important;}
+
+   /* Footer */
+   .footerbg{ bottom: -20px !important;}
+   img.logofooter{ width: 42px !important ; height: 24px !important; }
+   .textfooter{ font-size: 12px !important; font-weight:300 !important; text-align: center !important; }
+   a.tutorial , .textinfo{ font-size: 14px }
+   a.video_list:before {
+    font-size: 11px
+  }
+
+  a.video_list.selected:before {
+    font-size: 14px;
+  }
+  .t_noticia{font-size: 11px}
+  .d_noticia{font-size: 10px}
+  .noticiaberta ul li  {font-size: 11px}
+
+
+}
+
+@media (min-width:399px) and (max-width:499px){
+  .details-slider{height:434px; overflow:hidden;}
+  #inner{height:434px;}
+
+
+  .calendar_opcoes{ float: none; margin-top: 0px; margin-left: 10px}
+}
+
+@media (min-width:500px){
+  .details-slider{height:534px; overflow:hidden;}
+  #inner{height:534px;}
+  .caroufredsel_wrapper{max-height:400px!important;}
+
+}
+
+@media (min-width: 767px) { .user_menu{ display: none !important;}
+
+}
+@media (max-width: 767px) {
+.calendar_scroll{  overflow-x: auto !important; border: 1px solid #ccc}
+.calendar_mobile{  min-width: 800px !important;  } 
+.nav_new{ margin-left: -15px !important;}
+
+.carousel-inner img.imgfull {
+    height: auto !important;
+}
+
+  .menutabprincipal3 {
+    height: 110px;
+  }
+  .carousel-inner img.imgfull {
+    height: 240px ;
+}
+
+.navbar-wrapper2 {
+    min-height: 62px !important;
+}
+  #wrapper {
+    padding: 35px 0px 0px 0px;}
+  /*  #banner {
+    margin-top: 50px !important;}*/ 
+ .navbar-nav {  background-color: #f5f5f5;     margin-bottom: 0px; border-bottom: 4px solid #f19300; }
+ #header-wrapper .container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ .navbar-wrapper2{min-height:62px;}
+ body {padding-top: 62px !important;}
+ .navbar-brand {     padding: 0px 0px 0px 15px !important;}
+ .navbar-brand > img {
+    width: 80px !important;
+    height: 50px !important;
+    margin-top: 5px!important;
+    left: -0px !important;
+    position: relative !important;
+}
+ .navbar-form { width: 100% !important; float: left}
+ .nav > li { position: relative; display: block; border-bottom: 1px solid #ccc; text-align: center; }
+ .top-nav .nav > li { border-bottom: none;}
+ .navbar-nav>li>a { color: #000; font-size: 18px !important;  }
+ .logosenacmenu{ margin-top: -4px; margin-right: 0px !important; text-align: center}
+
+ /* Login */
+ .bglogin{background:url('/extranetead-portal/static/resources/images/login-bg-767.jpg') transparent scroll top left no-repeat !important;  }
+ img.login-img{margin-left:5px; margin-bottom:15px; margin-top:-20px !important; }
+ .form-search { margin-right: 0px; margin-top: 0px; width: 100% !important; }
+
+ /* Footer */
+ .footerbg{bottom: -70px !important;}
+
+ .textfooter{ font-size: 14px ; font-weight:300 ; text-align: center !important; }
+
+ /* Banner */
+ .logobanner{ width: 150px; height: 150px;}
+
+ .user, .video_time{ display: none !important;}
+ .video_titulo { font-size: 10px !important; }
+ .video_descricao{ font-size: 9px !important; }
+
+ /* Trilha */
+ .curso_detalhes{padding-left: 30px !important}
+ .curso_detalhes i {
+  font-size: 20px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.componentes ul li a { font-size: 11px}
+.curso table  { font-size: 11px}
+.trilhacomposta { font-size: 11px}
+.cronograma_agenda table { font-size: 11px !important;}
+
+/* Noticia */
+.thumb_noticia{height:100%; width: 100%;}
+
+/*btn*/
+
+.matriculabtn{width: 100% !important; margin-bottom: 50px}
+ #wrapper {
+    padding-top: 50px !important}
+}
+
+@media (max-width: 991px) {
+.tamanho_aviso{ height: auto !important } 
+.calendar_home td.tdcalendar {
+    padding: 5px 1px 4px 0px;
+}
+
+.calendar_home button.btncalendario {
+    padding: 10px 10px;}
+    .calendar_home .dayheader {
+    border-bottom: 5px #FCC681 solid;
+    padding: 10px;}
+   .acordion_senac  [aria-expanded="true"] .panel-body{ padding: 0px !important; }
+
+   .informe_profile{margin-top: 50px;}
+  #wrapper {
+    padding-top: 5px }
+    /*#banner {
+    margin-top: 5px;}*/
+ .form-search{ margin-right: 0px; margin-top: 5px; width: 100%;}
+ .form-sefile .form-control {width: 100%;}
+ .logosenacmenu{ margin-top: -4px; margin-right: 15px;}
+ .navbar-form .form-group { margin-bottom: 20px; width: 100%;}
+ .navbar-form .form-control { width: 100%; }
+ .navbar-brand { padding: 0px 0px 0px 0px;}
+ .logosenamenu{ margin-top: -10px;}
+ .navbar-nav>li>a { color:#000; font-size: 12px;}
+ body {padding-top: 96px;}
+ .navbar-form { width: 92%; float: left}
+ .nav > li > a {
+    position: relative;
+
+    display: block;
+    padding: 10px 5px;
+
+
+}
+
+.niveisinfo .panel-heading {
+
+    margin-top: 15px;
+    font-size:11px !important;
+    }
+
+.responsive-calendar{margin-top: 20px}
+
+.breadcrub ul.bcrumbs{margin-bottom: 15px;}
+
+.nav_new{ margin-left: 6px }
+
+ /* Login */
+ img.login-img{margin-left:5px; margin-top:0px; }
+ .navbar-right { margin-right: -15px; }
+
+ /* Footer */
+ .footerbg{bottom: -25px;}
+ img.logofooter{ width: 67px; height: 38px; }
+ .textfooter{ font-size: 18px ; font-weight:300 ; text-align: center !important; }
+
+ .bluebtn{ font-size: 12px ;}
+
+ .btn-grey {
+  padding: 12px 12px;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+#formulario_matricula .bluebtn {
+  padding: 12px 12px;
+  width: 100% !important;
+}
+
+.orientacao{border-right: none; }
+
+ .navbar-brand > img {
+    width: 65px;
+    height: 40px;
+    margin-top: 5px;
+    left: -15px;
+    position: relative;
+}
+
+}
+
+
+
+@media (min-width: 992px){
+  .nav_new{ margin-left: 100px !important;}
+.container {
+    max-width: 1024px ;
+}
+
+
+}
+@media (min-width: 767px) and (max-width: 992px) { 
+.calendar_home .nav {
+    padding-left: 35px;
+    margin-bottom: 0;
+    list-style: none;
+}
+}
+
+
+@media (min-width: 1200px){
+.container {
+    width: 1000px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+}
+
+@media (min-width: 1200px){
+.container {
+    width: 1000px;
+}}
+@media (min-width: 992px){
+.container {
+    width: 1000px;
+}}

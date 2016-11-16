@@ -1,0 +1,44 @@
+.galeria_selecao_container {
+  background: #fff;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+}
+
+.thumb {
+  height: 100px;
+  float: none;
+  position: relative;
+  top: 7px;
+}
+
+form .progress {
+  line-height: 15px;
+}
+
+}
+.progress {
+  display: inline-block;
+  width: 100px;
+  border: 3px groove #CCC;
+}
+.progress div {
+  font-size: smaller;
+  background: orange;
+  width: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+li.ms-elem-selectable :hover{
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  background-color: #084572;
+  font-weight: bold;
+  display: block;
+}

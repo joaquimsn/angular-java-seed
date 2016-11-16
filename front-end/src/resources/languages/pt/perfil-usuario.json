@@ -1,0 +1,10 @@
+{
+	"T_PERFIL_USUARIO": "Meus Dados",
+	"T_ALTERAR_SENHA": "Alterar Senha",
+	"T_EDITAR_PERFIL": "Editar Perfil",
+	"LBL_DADOS_USUARIO": "Dados de Acesso",
+	"LBL_SOMENTE_LEITURA": "Somente leitura",
+	"LBL_SENHA_ATUAL": "Senha atual",
+	"LBL_NOVA_SENHA": "Nova senha",
+	"LBL_CONFIRMACAO_SENHA": "Confirmação senha"
+}

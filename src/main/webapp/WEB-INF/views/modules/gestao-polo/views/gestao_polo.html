@@ -1,0 +1,89 @@
+<section class="menutabprincipal3" data-scroll-top>
+  <div class="container">
+    <article>
+      <div class="col-md-12 offset-0">
+         <div class="breadcrub">
+              <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                    <senac-breadcrumb></senac-breadcrumb>
+              </div>
+              <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                    <senac-busca-textual></senac-busca-textual>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </div>
+  </div>
+  </article>
+</section>
+
+<div class="container nav_internas" senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro" ng-init="search = configuracaoFiltro.search">
+  <!-- Tab Estrategias de Vendas -->
+  <div>
+
+    <!-- LEFT CONTENT -->
+    <div class="col-md-12 offset-0 textjustify slim  ">
+
+      <header class="section-header margtop20">
+        <h2 class="section-title normal"> Gerenciar Polos</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+
+      <div class="col-md-12  offset-0   padding5 margbottom10" data-senac-paginacao>
+
+        <div class="table-responsive mt-6">
+          <table class="table table-bordered table-hover table-striped" data-senac-ordenacao>
+            <thead>
+              <tr>
+                <th class="small" data-senac-item-ordenacao="nome">
+                  Polo
+                </th>
+                <th class="small center" data-senac-item-ordenacao="cnpj">
+                  CNPJ
+                </th>
+                <th class="small center" data-senac-item-ordenacao="telefone">
+                  DDD - Telefone
+                </th>
+                <th class="small center" data-senac-item-ordenacao="departamentoRegional.nome">
+                  DR
+                </th>
+                <th class="small center">
+                  Editar
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="polo in filtroResult.data track by $index">
+                  <td class="titulo_table" data-ng-bind="polo.nome"/>
+                  <td class="center" data-ng-bind="polo.cnpj"/>
+                  <td class="center" data-ng-bind="polo.telefone | SenacPhoneMask"/>
+                  <td class="center" data-ng-bind="polo.departamentoRegional.nome"/>
+                  <td class="center">
+                    <a data-ng-href="{{systemUri.gestaoPoloEdicao(polo.id)}}"title="Editar" class="tooltips btn btn-default btn-xs" tooltip-placement="left" uib-tooltip="Editar">
+                      <i class="fa fa-pencil lblue size14"></i>
+                    </a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-12 center">
+          <uib-pagination total-items="filtroResult.totalCount"  max-size="(isMobile ? applicationSettings.maxPaginationMobile : applicationSettings.maxPaginationDesktop)" force-ellipses="true" boundary-links="true" items-per-page="filtroResult.maxPageSize" ng-model="pagina" 
+                         ng-change="trocarPagina()" num-pages class="pagination-sm" 
+          previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+          </uib-pagination>
+        </div>
+      </div>
+
+    </div>
+    <div>
+        <div class="clearfix "></div>
+        <div class="divider "></div>
+
+        <a data-ng-href="{{systemUri.gestaoPoloCadastro()}}" class=" btn-grey  right center margright5 bold"><i class="fa fa-plus size11 margright5 " ></i>{{'BTN_INCLUIR_POLO' | translate}}</a>
+    </div>
+  </div>
+
+  </article>
+  </section>
+</div>

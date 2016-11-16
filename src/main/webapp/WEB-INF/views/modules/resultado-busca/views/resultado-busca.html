@@ -1,0 +1,56 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas">
+  <div class="margtop40">
+    <!-- LEFT CONTENT -->
+    <div class="col-md-12 offset-4">
+        <header class="section-header margtop20 ">
+            <h2 class="section-title normal">  Resultados da busca:</h2> 
+          <div class="spacer_left margbottom20"></div>
+        </header>
+      <div class="clearfix"></div>
+        <div data-ng-show="encontrouResultados">
+            <div class="acordion_senac">
+                <uib-accordion >
+                  <uib-accordion-group class="active "  data-ng-show="noticias">
+                    <uib-accordion-heading>
+                    <div class="nivel1">
+                        <span>Notícias</span> <span class="collapsearrow"></span>
+                    </div>   
+                    </uib-accordion-heading>
+                      <div class="mt10">
+                        <div class="table-responsive mtop-18">
+                             <div data-ng-repeat="noticia in noticias" class="res_conteudo_link" data-ng-click="abrirLink(systemUri.noticiaDetalhe(noticia.id))">
+                                    <h3 class="title blue capitalize">{{noticia.titulo}}</h3>
+                                    <p>{{noticia.chamada}}</p>                                         
+                             </div>
+                        </div>
+                      </div>
+                  </uib-accordion-group> 
+                  <uib-accordion-group class="active " data-ng-show="dicasVendas">
+                    <uib-accordion-heading>
+                    <div class="nivel1">
+                        <span>Dicas de Venda</span> <span class="collapsearrow"></span>
+                    </div>   
+                    </uib-accordion-heading>
+                      <div class="mt10">
+                        <div class="table-responsive mtop-18">
+                             <div data-ng-repeat="dicaVenda in dicasVendas" class="res_conteudo_no_link">
+                                    <h3 class="title blue capitalize">{{dicaVenda.titulo}}</h3>
+                                    <div class="margtop10 ng-binding">
+                                     {{dicaVenda.descricao}}
+                                    <div class="clearfix"></div>  
+                                    </div>                                 
+                                    <p></p>
+                                    <a class="size10 margtop5 ng-binding"> <i class="fa fa-map-marker"></i> {{dicaVenda.departamento}}</a>
+                                    <span class="orange size10" >{{dicaVenda.dataCadastro | date:'dd/MM/yyyy'}}</span>
+                             </div>
+                        </div>
+                      </div>
+                  </uib-accordion-group>                        
+                </uib-accordion>
+            </div> 
+        </div>            
+        <div data-ng-hide="encontrouResultados">Nenhum Resultado encontrado para o termo: <strong>{{termo}}</strong></div>
+  </div>
+</div>
+</div>

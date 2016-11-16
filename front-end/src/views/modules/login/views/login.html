@@ -1,0 +1,68 @@
+<style type="text/css">
+    @media (max-width: 479px) {
+body { margin-top: 0px !important;}
+}
+
+
+body {     background: #0F1D28 url("/extranetead-portal/static/resources/images/bg-body1.jpg") no-repeat top center;
+    width: 100%;
+    height: 100%; padding-top: 0px !important;}
+</style>
+
+<div class="" data-ng-controller="LoginController">
+    <div class="container">
+        <form class="form-signin" name="formLogin" method="POST">
+            <img src="/extranetead-portal/static/resources/images/senac.png" alt="..." class="img-responsive margbottom20 center">
+            <div class="form-signin-heading"> {{'T_LOGIN' | translate}}
+                <span class="light orange bold" translate="IDENTIFICACAO_SISTEMA"></span></div> 
+            <div class="login-wrap ">
+                <div class="user-login-info size14"><i class="fa fa-envelope-o lorange margright5"></i>{{'LBL_USUARIO' | translate}}
+                    <input  type="text" class="form-control margtop5" placeholder="{{'LBL_USUARIO' | translate}}"
+                            name="cpf"
+                            data-ng-model="credencial.usuario"
+                            required
+                            data-mask="999.999.999-99"
+                            restrict="reject"
+                            data-clean="true"
+                            data-cpf>
+
+                    <div data-ng-messages="formLogin.cpf.$error" data-ng-if="formLogin.cpf.$touched && !submitted">
+                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                    </div>
+
+                    <i class="fa fa-key lorange margright5"></i>{{'LBL_SENHA' | translate}}
+                    <input  type="password" class="form-control margtop5" placeholder="{{'LBL_SENHA' | translate}}"
+                            name="senha"
+                            data-ng-model="credencial.senha"
+                            required
+                            minlength="4"
+                            maxlength="16">
+
+                    <div data-ng-messages="formLogin.senha.$error" data-ng-if="formLogin.senha.$touched && !submitted">
+                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                    </div>
+
+                </div>
+                <div class="center">
+                    <button class="btn btn-lg  bold btn-login btn-block"
+                            data-ng-click="efetuarLogin(credencial)"
+                            data-ng-disabled="formLogin.$invalid">
+                            <span data-translate="{{'BTN_ENTRAR'}}"></span>
+                    </button>
+
+                    <show-message data-show="globalMessage.show" data-nivel="globalMessage.nivel" data-text="globalMessage.text"></show-message>
+                </div>
+                <div class="clearfix"></div>
+                <div class="line4"></div>
+                <label class="checkbox">
+                    <a  class="blue" data-ng-click="abrirModalSolicitacaoAcesso()">{{'BTN_PRIMEIRO_ACESSO' | translate}}</a>
+                    <span class="pull-right">
+                    <a class="blue" data-ng-click="abrirModalResetSenha()">
+                       {{'BTN_ESQUECI_SENHA' | translate}}
+                    </a>
+                </span>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>

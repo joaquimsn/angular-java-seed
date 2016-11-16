@@ -1,0 +1,102 @@
+
+<div class="col-md-9 offset-0 tabs_internas tabs-sub margtop30">            
+            <!-- Lista Links Menu tab -->
+            <header class="panel-heading">
+              <ul class="nav nav-tabs nav-justified offset-0">
+                <li class="cursor-pointer" data-ng-class="{'active': abaConteudoAtiva == 1}" data-ng-click="mudarAbaConteudo(1)">
+                  <a aria-expanded="false">
+                        {{'MOD_TAB_INFO' | translate}}
+                  </a>
+                </li>
+                <li  class="cursor-pointer" data-ng-class="{'active': abaConteudoAtiva == 2}" data-ng-click="mudarAbaConteudo(2)">
+                  <a>
+                        {{'MOD_TAB_DOC' | translate}}
+                      </a>
+                </li>
+                <li class="cursor-pointer" data-ng-class="{'active': abaConteudoAtiva == 3}" data-ng-click="buscarPorFiltro(configuracaoFiltro.search);mudarAbaConteudo(3)">
+                  <a>
+                      {{'MOD_TAB_CURSO' | translate}}                      
+                  </a>
+                </li>
+              </ul>
+            </header>
+            <!-- Fim Lista Links Menu tab -->
+            <!-- Corpo Tab -->
+            <div class="panel-body border">
+              <div class="tab-content ">
+                <!-- Tab Estrategias de Vendas -->
+                <div  class="tab-pane " data-ng-class="{'active': abaConteudoAtiva == 1}">
+                  <div id="senacApresentacaoModalidade" data-ng-init="preencherInformacoes(tabModalidadeSelecionada)" class="imgmobile"> 
+                  </div>
+                </div>
+                <div  class="tab-pane " data-ng-class="{'active': abaConteudoAtiva == 2}">
+                     <div class="acordion_senac">
+                    <uib-accordion >
+                      <uib-accordion-group is-open="menuAberto" class="active " data-ng-repeat="docAgrupado in tabModalidadeSelecionada.conteudo.documentos">
+                        <uib-accordion-heading>
+                       
+
+                            <div class="nivel1">
+                            <span>{{docAgrupado.categoria}}</span> <span class="collapsearrow"></span>
+                        </div>   
+                        </uib-accordion-heading>
+                          <div class="mt10">
+                            <div class="table-responsive mtop-18">
+                              <table class="table table-bordered table-hover table-striped slim ">
+                                <thead>
+                                  <tr class="filters">
+                                    <th class=" center size16">#</th>
+                                    <th class=" size14 dark center caps"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Arquivos</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr data-ng-repeat="doc in docAgrupado.listaDocumento">
+                                    <td class="center ">{{$index + 1}}</td>
+                                    <td class=""> <a ng-href="{{apiUrl + doc.linkDownload}}" senac-download-signature target="_blank">{{doc.titulo}}</a> </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                      </uib-accordion-group>                 
+                    </uib-accordion>
+                    </div>   
+                </div>
+                <div id="cursos" class="tab-pane " data-ng-class="{'active': abaConteudoAtiva == 3}">
+                    <div data-ng-show="filtroResult.data != undefined && filtroResult.data.length > 0">                 
+                        <div senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro" ng-init="search = configuracaoFiltro.search">
+                            <div class="col-md-12 offset-0 margtop10 margbottom10  ">
+                                <div class="clearfix"></div>
+                                <ul class="list-group margtop10 size12 blue">
+                                <li class="list-group-item hover-list-curso pointer" data-ng-repeat="curso in filtroResult.data" data-ng-click="abrirModalCurso(curso)"><i class="fa fa-play orange margright5 size8"></i> {{curso.titulo}} </li>
+                                </ul>
+                                <div class="col-md-12 center" data-senac-paginacao>
+                                  <uib-pagination total-items="filtroResult.totalCount"  max-size="(isMobile ? applicationSettings.maxPaginationMobile : applicationSettings.maxPaginationDesktop)" force-ellipses="true" boundary-links="true" items-per-page="filtroResult.maxPageSize" ng-model="pagina" 
+                                                 ng-change="trocarPagina()" num-pages class="pagination-sm" 
+                                  previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                  </uib-pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                        
+              </div>
+              <!-- Fim Corpo Tab -->
+            </div>
+          </div>
+</div>    
+<!-- menu tab -->
+<div class="col-md-3 margtop30">
+  <div class="niveisinfo panel-group m-bot20 mtop15" id="accordion" data-ng-controller="SistemaController as mv">
+    <button class="accordion-toggle collapsed btn-orange btn-block" data-toggle="collapse" data-target-id="collapsecc" data-ng-show="mv.sistemas.length > 0">
+        Sistemas DRs {{tabModalidadeSelecionada.conteudo.nivel.titulo}}
+    </button>   <div class="clearfix"></div>
+    <div id="collapsecc" class="panel-collapse collapse clearfix" aria-expanded="false">
+      <div class="degrade">
+        <div class="list-group" data-ng-init="mv.buscarSistemasPorNivel(tabModalidadeSelecionada.conteudo.nivel)">
+          <button data-ng-repeat="sistema in ::mv.sistemas track by $index" type="button" class="list-group-item"> <a data-ng-href="{{sistema.link}}" target="_blank" data-ng-bind="sistema.nome"></a></button>  
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>  <div class="clearfix"></div>
+  </div>
+</div>

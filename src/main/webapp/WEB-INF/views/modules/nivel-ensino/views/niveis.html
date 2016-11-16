@@ -1,0 +1,31 @@
+<senac-nivel-ensino-submenu></senac-nivel-ensino-submenu>
+<div class="container nav_internas">
+    <div class="col-md-12 textjustify slim   margtop10">
+        <senac-apresentacao id="NVL_ENSINO"></senac-apresentacao>
+    </div>
+    <div class="clearfix"></div>
+    <div class="divider">
+        <!-- divider -->
+    </div>
+    <div class="margtop30">
+        <div class="col-md-4" data-ng-repeat="nivel in ::niveis track by $index">
+            <div class="boxshadow ">
+                <img data-ng-src="{{apiUrl + nivel.imagem.linkDownload}}" alt="" class="fwimg">
+                <div class="bscontainer">
+                    <h3 class="lato bold caps textcenter dark" data-ng-bind="nivel.titulo"></h3>
+                    <hr>
+                    <div id="txt_destaque">
+                      <span class="grey2" data-ng-bind="nivel.chamada"></span>
+                    </div>
+                  
+                    <div class="center margtop20 margbottom10">
+                        <a class=" bluebtn btn-lg caps" data-ng-href="{{systemUri.niveisEnsino() + '/' + nivel.path}}">
+                            <i class="fa fa-plus size11 margright5" aria-hidden="true"></i>{{"LBL_SAIBA_MAIS" | translate}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,736 @@
+<div class="container nav_internas">
+    <div>
+
+        <div class="col-md-12 offset-0 textjustify margtop20">
+
+            <header class="section-header margtop5 ">
+                <h2 class="section-title normal" data-ng-if="cadastro"> {{'T_POLO_CAD' | translate}} </h2>
+                <h2 class="section-title normal" data-ng-if="edicao"> {{'T_POLO_EDI' | translate}} </h2>
+                <div class="spacer_left margbottom10"></div>
+            </header>
+            <!-- Fim Topo -->
+
+            <!-- panel-body -->
+            <div class="well offset-0 degrade shadow col-md-12">
+                <!-- Conteudo Polo -->
+                <form method="POST" name="formPolo">
+                    <div class="col-md-12  textjustify margtop20 ">
+                        <div class="well offset-0 degrade  col-md-12 ">
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+                                <div class="size11 bold dark">{{'LBL_POLO_NOME' | translate}}: </div>
+                                <input class="form-control" placeholder="Razão social" type="text" value="Polo Primavera do Leste" data-ng-model='polo.nome' name="nome" required minlength="2" maxlength="100" />
+
+                                <div data-ng-messages="formPolo.nome.$error" data-ng-if="(formPolo.nome.$touched || edicao)">
+                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 margtop15">
+                                <div class="size11 bold dark">{{'LBL_CNPJ' | translate}}:</div>
+                                <input class="form-control " type="text" data-ng-model='polo.cnpj' placeholder="CNPJ" name="cnpj" required clean="true" required data-mask="99.999.999/9999-99" />
+
+                                <div data-ng-messages="formPolo.cnpj.$error" data-ng-if="(formPolo.cnpj.$touched || edicao)">
+                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 margtop15">
+                                <div class="size11 bold dark">{{'LBL_DR_EXTENSO' | translate}}: </div>
+                                <select class="form-control" data-ng-options="dr.nome for dr in departamentosRegionais track by dr.id" data-ng-model="polo.departamentoRegional" name="dr" required>
+                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+
+                  <div data-ng-messages="formPolo.dr.$error" data-ng-if="(formPolo.dr.$touched || edicao)">
+                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                  </div>
+                </select>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 margtop15 ">
+                                <div class="size11 bold dark">{{'LBL_EMAIL' | translate}}:</div>
+                                <input class="form-control " placeholder="exemplo@exemplo.com" name="emailDr" type="email" data-ng-model="polo.emailDepartamento" required />
+
+                                <div data-ng-messages="formPolo.emailDr.$error" data-ng-if="(formPolo.emailDr.$touched || edicao)">
+                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="col-md-12 margtop20">
+                                <button class="btn-orange right caps margbottom10" data-ng-click="abrirModalModalidade()"><i class="fa fa-edit"></i>  {{'BTN_MODALIDADES' | translate}} 
+                </button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-12  offset-0  margtop10 tabs_internas tabs-sub">
+                            <!-- Lista Links Menu tab -->
+                            <header class="panel-heading ">
+                                <ul class="nav nav-tabs nav-justified offset-0 ">
+                                    <li data-ng-class="{'active': tab === 'END'}" class="cursor-pointer">
+                                        <a data-ng-click="tab = 'END'" data-ng-class="{'tab-error': ((formTabEnd.$error.required[0].$touched && cadastro) || (formTabEnd.$error && edicao))}">  
+                      {{'POLO_TAB_END' | translate}}
+                    </a>
+                                    </li>
+
+                                    <li data-ng-class="{'active': tab === 'RESP'}" class="cursor-pointer">
+                                        <a data-ng-click="tab = 'RESP'" data-ng-class="{'tab-error': formTabResp.$invalid}"> 
+                      {{'POLO_TAB_RESP' | translate}} 
+                    </a>
+                                    </li>
+
+                                    <li data-ng-class="{'active': tab === 'INFRA'}" class="cursor-pointer">
+                                        <a data-ng-click="tab = 'INFRA'" data-ng-class="{'tab-error': formTabInfra.$invalid}"> 
+                      {{'POLO_TAB_INFRA' | translate}} 
+                    </a>
+                                    </li>
+
+                                    <li data-ng-class="{'active': tab === 'ATEND'}" class="cursor-pointer">
+                                        <a data-ng-click="tab = 'ATEND'" data-ng-class="{'tab-error': formTabAtend.$invalid}">
+                      {{'POLO_TAB_ATEND' | translate}} 
+                    </a>
+                                    </li>
+
+                                    <li data-ng-class="{'active': tab === 'INST'}" class="cursor-pointer">
+                                        <a data-ng-click="tab = 'INST'" data-ng-class="{'tab-error': formTabInst.$invalid}">
+                      {{'POLO_TAB_INST' | translate}} 
+                    </a>
+                                    </li>
+                                </ul>
+                                </ul>
+                            </header>
+                            <!-- Fim Lista Links Menu tab -->
+                            <!-- Corpo Tab -->
+                            <div class="panel-body border bgwhite editarpolo ">
+                                <div class="tab-content ">
+
+                                    <!--  Endereço -->
+                                    <div data-ng-form="formTabEnd" data-ng-class="{'active': tab === 'END'}" class="tab-pane">
+                                        <div class="col-md-12 offset-0 slim ">
+                                            <div class="margtop10 ">
+                                                <div class="col-md-9 col-xs-12 col-lg-9 col-sm-12 ">
+                                                    <div class="size11 bold dark ">{{'LBL_ENDERECO' | translate}} </div>
+                                                    <input class="form-control " placeholder="Av. principal" type="text" name="logradouro" data-ng-model="polo.endereco.logradouro" required minlength="3" maxlength="100" />
+                                                    <div data-ng-messages="formTabEnd.logradouro.$error" data-ng-if="(formTabEnd.logradouro.$touched && (!submitted || edicao))">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12 ">
+                                                    <div class="size11 bold dark ">{{'LBL_NUMERO' | translate}} </div>
+                                                    <input class="form-control " type="number" data-ng-model="polo.endereco.numero" name="enderecoNumero" required />
+                                                    <div data-ng-messages="formTabEnd.enderecoNumero.$error" data-ng-if="(formTabEnd.enderecoNumero.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+
+                                                <div class="col-md-3 col-xs-12 col-lg-3 col-sm-6 margtop20 ">
+                                                    <div class="size11 bold dark ">{{'LBL_BAIRRO' | translate}} </div>
+                                                    <input class="form-control " placeholder="{{'LBL_BAIRRO' | translate}}" type="text " data-ng-model="polo.endereco.bairro" name="bairro" required minlength="3" maxlength="60" />
+                                                    <div data-ng-messages="formTabEnd.enderecoNumero.$error" data-ng-if="(formTabEnd.enderecoNumero.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-12 col-lg-3 col-sm-6 margtop20 ">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6 offset-1 ">
+                                                        <div class="size11 bold dark ">{{'LBL_UF' | translate}}</div>
+                                                        <select class="form-control" data-ng-options="uf.nome for uf in ::ufs track by uf.id" data-ng-model="ufSelecionada" data-ng-change="buscarCidades(ufSelecionada)" required name="uf">
+                                                          <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                        </select>
+
+                                                        <div data-ng-messages="formTabEnd.uf.$error" data-ng-if="(formTabEnd.uf.$touched || edicao)">
+                                                            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6  col-sm-6 col-xs-6 offset-1">
+                                                        <div class="size11 bold dark ">{{'LBL_MUNICIPIO' | translate}}</div>
+                                                        <select class="form-control" data-ng-disabled="!ufSelecionada" required="" name="cidade" data-ng-options="cidade.nome for cidade in cidades track by cidade.id" data-ng-model="polo.endereco.cidade">
+                                                          <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                        </select>
+
+                                                        <div data-ng-messages="formTabEnd.cidade.$error" data-ng-if="(formTabEnd.cidade.$touched || edicao)">
+                                                            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12 margtop20 ">
+                                                    <div class="size11 bold dark ">{{'LBL_CEP' | translate}} </div>
+                                                    <input class="form-control " placeholder="00000-000" type="text" data-ng-model="polo.endereco.cep" required data-mask="99999-999" name="cep" clean="true" />
+
+                                                    <div data-ng-messages="formTabEnd.cep.$error" data-ng-if="(formTabEnd.cep.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12 margtop20 ">
+                                                    <div class="size11 bold dark "> {{'LBL_TELEFONE' | translate}} </div>
+                                                    <input class="form-control " placeholder="(xx) xxxx-xxxx" type="text " mask="(99) 9?9999-9999" data-ng-model="polo.telefone" name="telefone" required restrict="reject" />
+                                                    <div data-ng-messages="formTabEnd.telefone.$error" data-ng-if="(formTabEnd.telefone.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+
+                                                <div class="col-md-8 col-xs-12 col-lg-8 col-sm-12 margtop20 ">
+                                                    <div class="size11 bold dark ">{{'LBL_COMPLEMENTO' | translate}} </div>
+                                                    <input class="form-control " placeholder="Bloco A" type="text" minlength="3" maxlength="60" data-ng-model="polo.endereco.complemento" name="complemento" />
+                                                    <div data-ng-messages="formTabEnd.complemento.$error" data-ng-if="(formTabEnd.complemento.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 margtop20 ">
+                                                    <div class="size11 bold dark ">{{'LBL_SITE' | translate}}</div>
+                                                    <input class="form-control " type="text" minlength="5" maxlength="256" data-ng-model="polo.site" name="site" />
+
+                                                    <div data-ng-messages="formTabEnd.site.$error" data-ng-if="(formTabEnd.site.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+
+                                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 margtop20 orange bold ">
+                                                    {{'LBL_HORARIO_FUNC' | translate}}</div>
+                                                <div class="clearfix"></div>
+
+                                                <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 margtop10 ">
+                                                    <div class="size11 bold dark ">{{'LBL_SEG_SEX' | translate}} </div>
+                                                    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 offset-1 margtop5 ">
+                                                        <select class="form-control" data-ng-options="hora for hora in horarios" name="horarioFuncSemana" data-ng-model="polo.json.horarioFuncionamento.segundaSexta.inicio" required>
+                                                          <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                        </select>
+                                                        <div data-ng-messages="formTabEnd.horarioFuncSemana.$error" data-ng-if="(formTabInfra.horarioFuncSemana.$touched || edicao)">
+                                                            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 offset-1 margtop5 ">
+                                                        <select class="form-control" data-ng-options="hora for hora in horarios" name="horarioFuncSemanaFim" data-ng-model="polo.json.horarioFuncionamento.segundaSexta.fim" required>
+                                                          <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                        </select>
+                                                        <div data-ng-messages="formTabEnd.horarioFuncSemanaFim.$error" data-ng-if="(formTabInfra.horarioFuncSemanaFim.$touched || edicao)">
+                                                            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 margtop10 ">
+                                                    <div class="size11 bold dark ">{{'LBL_SABADO' | translate}}</div>
+                                                    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 offset-1 margtop5 ">
+                                                        <select class="form-control " data-ng-options="hora for hora in horarios" name="horarioFuncSabadoIni" data-ng-model="polo.json.horarioFuncionamento.sabado.inicio" required>
+                                                          <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                        </select>
+                                                        <div data-ng-messages="formTabEnd.horarioFuncSabadoIni.$error" data-ng-if="(formTabInfra.horarioFuncSabadoIni.$touched || edicao)">
+                                                            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 offset-1 margtop5 ">
+                                                        <select class="form-control " data-ng-options="hora for hora in horarios" name="horarioFuncSabadoFim" data-ng-model="horarioFuncionamento.sabado.fim" required>
+                                                          <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                        </select>
+                                                        <div data-ng-messages="formTabEnd.horarioFuncSabadoFim.$error" data-ng-if="(formTabInfra.horarioFuncSabadoFim.$touched || edicao)">
+                                                            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  Fim Endereço -->
+
+                                    <!-- Tab responsavel -->
+                                    <div data-ng-class="{'active': tab === 'RESP'}" class="tab-pane" data-ng-form="formTabResp">
+                                        <div class="margtop10">
+                                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 ">
+                                                <div class="size11 bold dark ">{{'LBL_NOME_RESPONSAVEL' | translate}}</div>
+                                                <input class="form-control " placeholder="Jõao Silva" type="text " required minlength="3" maxlength="100" name="respNome" data-ng-model="polo.responsavelNome" />
+
+                                                <div data-ng-messages="formTabResp.respNome.$error" data-ng-if="(formTabResp.respNome.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 ">
+                                                <div class="size11 bold dark ">{{'LBL_GENERO' | translate}} </div>
+                                                <select class="form-control" required name="respGenero" data-ng-model="polo.responsavelGenero">
+                                                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                  <option value="M">Masculino</option>
+                                                  <option value="F">Feminino</option>
+                                                </select>
+                                                <div data-ng-messages="formTabResp.respGenero.$error" data-ng-if="(formTabResp.respGenero.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 ">
+                                                <div class="size11 bold dark ">{{'LBL_CPF' | translate}} </div>
+                                                <input class="form-control" type="text" data-ng-model="polo.responsavelCpf" name="respCpf" required clean="true" required cpf data-mask="999.999.999-99" />
+                                                <div data-ng-messages="formTabResp.respCpf.$error" data-ng-if="(formTabResp.respCpf.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 margtop20 ">
+                                                <div class="col-md-8 col-xs-12 col-lg-8 col-sm-12 offset-1 ">
+                                                    <div class="size11 bold dark ">{{'LBL_RG' | translate}} </div>
+                                                    <input class="form-control" type="text" data-ng-model="polo.responsavelRg" name="respRg" required minlength="10" maxlength="16" />
+                                                    <div data-ng-messages="formTabResp.respRg.$error" data-ng-if="(formTabResp.respRg.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 offset-0 ">
+                                                    <div class="size11 bold dark ">{{'LBL_ORGAO_EXP' | translate}}</div>
+                                                    <input class="form-control " placeholder="SSP/SP" type="text" data-ng-model="polo.responsavelOrgaoExpedidor" name="respOrgExped" required minlength="6" maxlength="6" />
+                                                    <div data-ng-messages="formTabResp.respOrgExped.$error" data-ng-if="(formTabResp.respOrgExped.$touched || edicao)">
+                                                        <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 margtop20 ">
+                                                <div class="size11 bold dark ">{{'LBL_EMAIL' | translate}}</div>
+                                                <input class="form-control" type="email" data-ng-model="polo.responsavelEmail" name="respEmail" />
+                                                <div data-ng-messages="formTabResp.respEmail.$error" data-ng-if="(formTabResp.respEmail.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Fim responsavel -->
+
+                                    <!-- Infraestrutura -->
+                                    <div data-ng-class="{'active': tab === 'INFRA'}" class="tab-pane" data-ng-form="formTabInfra">
+                                        <div class="margtop10 ">
+
+                                            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 ">
+                                                <div class="size11 bold dark ">{{'LBL_VINCULO_IMOVEL' | translate}}</div>
+                                                <select class="form-control" name="infraVincImovel" data-ng-model="polo.infraestrutura.vinculoImovel" required />
+                                                <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                <option value="Próprio"> Próprio</option>
+                                                <option value="Alugado"> Alugado </option>
+                                                <option value="Cedido"> Cedido </option>
+                                                <option value="Comodato"> Comodato </option>
+                                                <option value="Convênio"> Convênio </option>
+                                                <option value="Acordo de Parceria"> Acordo de Parceria </option>
+                                                </select>
+
+                                                <div data-ng-messages="formTabInfra.infraVincImovel.$error" data-ng-if="(formTabInfra.infraVincImovel.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12 ">
+                                                <div class="size11 bold dark ">{{'LBL_AREA_TOTAL' | translate}}</div>
+                                                <input class="form-control " type="number" data-ng-model="polo.infraestrutura.areaTotal" name="infraAreaTotal" required/>
+
+                                                <div data-ng-messages="formTabInfra.infraAreaTotal.$error" data-ng-if="(formTabInfra.infraAreaTotal.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 margtop20 ">
+                                                <div class="size11 bold dark ">{{'LBL_POSSUI_AR' | translate}}</div>
+                                                <select class="form-control" data-ng-options="label for label in comboboxInfraestruturaPossui" data-ng-model="polo.infraestrutura.possuiArCondicionado" name="infraPossuiAr" required>
+                                                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                </select>
+
+                                                <div data-ng-messages="formTabInfra.infraPossuiAr.$error" data-ng-if="(formTabInfra.infraPossuiAr.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12 margtop20 ">
+                                                <div class="size11 bold dark ">{{'LBL_POSSUI_WIFI' | translate}}</div>
+                                                <select class="form-control" data-ng-model="polo.infraestrutura.possuiWifi" name="infraPossuiWifi" required data-ng-options="label for label in comboboxInfraestruturaPossui">
+                                                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                </select>
+
+                                                <div data-ng-messages="formTabInfra.infraPossuiWifi.$error" data-ng-if="(formTabInfra.infraPossuiWifi.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-xs-12 col-lg-4 ol-sm-12 margtop20 ">
+                                                <div class="size11 bold dark ">{{'LBL_POSSUI_MULTIMIDIA' | translate}}</div>
+                                                <select class="form-control" data-ng-model="polo.infraestrutura.possuiMultimidia" name="infraPossuiMultimida" required data-ng-options="label for label in comboboxInfraestruturaPossui">
+                                                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                                                </select>
+
+                                                <div data-ng-messages="formTabInfra.infraPossuiMultimida.$error" data-ng-if="(formTabInfra.infraPossuiMultimida.$touched || edicao)">
+                                                    <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                    </div>
+                                    <!-- Fim Infraestrutura -->
+
+                                    <!-- Atendimento -->
+                                    <div data-ng-class="{'active': tab === 'ATEND'}" class="tab-pane" data-ng-form="formTabAtend">
+                                        <div class="margtop10 ">
+
+                                            <div class="col-md-12 blue mt-5 center ">
+                                                Marque com <b>X</b> no quadro a seguir os dias da semana que terá disponibilidade de atendimento aos alunos de EAD. </div>
+
+                                            <div class="col-md-12 margtop10 ">
+                                                <div class="table-responsive ">
+                                                    <table class="table table-bordered table-hover table-striped ">
+                                                        <thead>
+                                                            <tr class=" ">
+                                                                <th class="small center ">
+                                                                    Período
+                                                                </th>
+                                                                <th class="small center ">
+                                                                    Segunda
+                                                                </th>
+                                                                <th class="small center ">
+                                                                    Terça
+                                                                </th>
+                                                                <th class="small center ">
+                                                                    Quarta
+                                                                </th>
+                                                                <th class="small center ">
+                                                                    Quinta
+                                                                </th>
+                                                                <th class="small center ">
+                                                                    Sexta
+                                                                </th>
+                                                                <th class="small center ">
+                                                                    Sábado
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="center">Matutino</td>
+                                                                <td class="bs-checkbox center" data-ng-repeat="dia in ::diasAtendimento track by $index">
+                                                                    <input type="checkbox" checklist-model="polo.json.atendimento.matutino" checklist-value="dia" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">Vespertino</td>
+                                                                <td class="bs-checkbox center" data-ng-repeat="dia in ::diasAtendimento track by $index">
+                                                                    <input type="checkbox" checklist-model="polo.json.atendimento.vespertino" checklist-value="dia" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">Noturno</td>
+                                                                <td class="bs-checkbox center" data-ng-repeat="dia in ::diasAtendimento track by $index">
+                                                                    <input type="checkbox" checklist-model="polo.json.atendimento.noturno" checklist-value="dia" />
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- fIM Atendimento -->
+                                    <!-- Instalações -->
+                                    <div data-ng-class="{'active': tab === 'INST'}" class="tab-pane" data-ng-form="formTabInst">
+                                        <div class="margtop10 ">
+                                            <div class="col-md-12 ">
+                                                <div class="col-md-12 margtop10 ">
+                                                    <span class="size16px bold dark left margright10 size12 "><i class="fa fa-desktop size13 "></i> Instalações </span>
+                                                    <div class="clearfix "></div>
+                                                </div>
+                                                <div class="col-md-12 margtop10 ">
+                                                    <div class="table-responsive mt-6 ">
+                                                        <table class="table table-bordered table-hover table-striped ">
+                                                            <thead>
+                                                                <tr class=" ">
+                                                                    <th class="small center ">
+                                                                        Tipo de Instalação
+                                                                    </th>
+                                                                    <th class="small center ">
+                                                                        Capacidade Total
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="center ">Auditório / Anfiteatro</td>
+                                                                    <td class=" ">
+                                                                        <div class="col-md-6 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.auditorio" name="instAuditorio" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instAuditorio.$error" data-ng-if="(formTabInst.instAuditorio.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 "> <span class="help-block ">de Pessoas</span></div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="center ">Biblioteca Capacidade</td>
+                                                                    <td class=" ">
+                                                                        <div class="col-md-6 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.biblioteca" name="instBiblioteca" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instBiblioteca.$error" data-ng-if="(formTabInst.instBiblioteca.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 "> <span class="help-block ">de Pessoas</span></div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="center "> Coordenação EAD</td>
+                                                                    <td class=" ">
+                                                                        <div class="col-md-6 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.coordenacao" name="instCoordenacao" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instCoordenacao.$error" data-ng-if="(formTabInst.instCoordenacao.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 "> <span class="help-block ">Postos de Trabalho</span></div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="center ">Espaço do Docente e Tutor</td>
+                                                                    <td class=" ">
+                                                                        <div class="col-md-6 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.espacoDocente" name="instDocente" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instDocente.$error" data-ng-if="(formTabInst.instDocente.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 "> <span class="help-block ">de Pessoas</span></div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="center ">Recepção</td>
+                                                                    <td class=" ">
+                                                                        <div class="col-md-6 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.recepcao" name="instRecepcao" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instRecepcao.$error" data-ng-if="(formTabInst.instRecepcao.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 "> <span class="help-block ">Atendimento</span></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 ">
+                                                <div class="col-md-12 margtop10 ">
+                                                    <span class="size16px bold dark left margright10 size12 "><i class="fa fa-users size13 "></i> Capacidade em Cada Ambiente  /  Instalação de Aula e Laboratórios de Informatica  </span>
+                                                    <div class="clearfix "></div>
+                                                </div>
+
+                                                <div class="col-md-12 margtop10 ">
+                                                    <div class="table-responsive mt-6 ">
+                                                        <table class="table table-bordered table-hover table-striped ">
+                                                            <thead>
+                                                                <tr class=" ">
+                                                                    <th class="small center ">
+                                                                        Tipo de Instalação
+                                                                    </th>
+                                                                    <th class="small center ">
+                                                                        Período
+                                                                    </th>
+                                                                    <th class="small center ">
+                                                                        Quantidade
+                                                                    </th>
+                                                                    <th class="small center ">
+                                                                        Capacidade
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="center ">Laboratório de Informática</td>
+                                                                    <td class="center ">Manhã</td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 ">
+                                                                            <input class="form-control  " placeholder="" data-ng-model="polo.json.instalacoes.laboratorioInformaticaManha.quantidade" name="instLabInforManhaQtd" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabInforManhaQtd.$error" data-ng-if="(formTabInst.instLabInforManhaQtd.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 margtop15">
+                                                                            <input class="form-control margtop5" placeholder="" data-ng-model="polo.json.instalacoes.laboratorioInformaticaManha.capacidade" name="instLabInforManhaCap" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabInforManhaCap.$error" data-ng-if="(formTabInst.instLabInforManhaCap.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class=""> <span class="help-block size11">de Computadores</span></div>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="center ">Laboratório de Informática</td>
+                                                                    <td class="center ">Tarde</td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 ">
+                                                                            <input class="form-control  " placeholder="" data-ng-model="polo.json.instalacoes.laboratorioInformaticaTarde.quantidade" name="instLabInforTardeQtd" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabInforTardeQtd.$error" data-ng-if="(formTabInst.instLabInforTardeQtd.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 margtop15">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.laboratorioInformaticaTarde.capacidade" name="instLabInforTardeCap" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabInforTardeCap.$error" data-ng-if="(formTabInst.instLabInforTardeCap.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class=""> <span class="help-block size11 ">de Computadores</span></div>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="center ">Laboratório de Informática</td>
+                                                                    <td class="center ">Noite</td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 ">
+                                                                            <input class="form-control  " placeholder="" data-ng-model="polo.json.instalacoes.laboratorioInformaticaNoite.quantidade" name="instLabInforNoiteQtd" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabInforNoiteQtd.$error" data-ng-if="(formTabInst.instLabInforNoiteQtd.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 margtop15 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.laboratorioInformaticaNoite.capacidade" name="instLabInforNoiteCap" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabInforNoiteCap.$error" data-ng-if="(formTabInst.instLabInforNoiteCap.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class=""> <span class="help-block size11 ">de Computadores</span></div>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="center ">Sala de Aula</td>
+                                                                    <td class="center ">Manhã</td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 ">
+                                                                            <input class="form-control  " placeholder="" data-ng-model="polo.json.instalacoes.salaDeAulaManha.quantidade" name="instSalaAulaManhaQtd" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instSalaAulaManhaQtd.$error" data-ng-if="(formTabInst.instSalaAulaManhaQtd.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 margtop15">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.salaDeAulaManha.capacidade" name="instLabSalaAulaManhaCap" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabSalaAulaManhaCap.$error" data-ng-if="(formTabInst.instLabSalaAulaManhaCap.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class=""> <span class="help-block size11 ">de Alunos</span></div>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="center ">Sala de Aula</td>
+                                                                    <td class="center ">Tarde</td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 ">
+                                                                            <input class="form-control  " placeholder="" data-ng-model="polo.json.instalacoes.salaDeAulaTarde.quantidade" name="instSalaAulaTardeQtd" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instSalaAulaManhaQTarderror" data-ng-if="formTabInst.instSalaAulaManhaQtdTardeched && !submitted">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 margtop15">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.salaDeAulaTarde.capacidade" name="instLabSalaAulaTardeCap" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabSalaAulaManhaCTarderror" data-ng-if="(formTabInst.instLabSalaAulaTardeCap.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class=""> <span class="help-block size11 ">de Alunos</span></div>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="center ">Sala de Aula</td>
+                                                                    <td class="center ">Noite</td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 ">
+                                                                            <input class="form-control  " placeholder="" data-ng-model="polo.json.instalacoes.salaDeAulaNoite.quantidade" name="instSalaAulaNoiteQtd" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instSalaAulaNoiteQtd.$error" data-ng-if="(formTabInst.instSalaAulaNoiteQtd.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="center ">
+                                                                        <div class="col-md-12 margtop15 ">
+                                                                            <input class="form-control margtop5 " placeholder="" data-ng-model="polo.json.instalacoes.salaDeAulaNoite.capacidade" name="instLabSalaAulaNoiteCap" required type="number" />
+                                                                            <div data-ng-messages="formTabInst.instLabSalaAulaNoiteCap.$error" data-ng-if="(formTabInst.instLabSalaAulaNoiteCap.$touched || edicao)">
+                                                                                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class=""> <span class="help-block size11 ">de Alunos</span></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 none">
+                                                    <span class="size16px bold dark left margright10 size14 "><i class="fa fa-picture-o size13 "></i> Upload de Fotos  </span>
+                                                    <div class="clearfix "></div>
+                                                </div>
+
+                                                <div class="col-md-12 blue none">
+                                                    Adicionar arquivo em formato Zip ou Rar com <b>1 foto da Fachada da Unidade</b> </div>
+                                                <div class="col-sm-12 margtop10 margbottom10 none">
+                                                    <label class=" control-label ">Imagem Fachada :</label>
+                                                    <input type="file " class="form-control margtop5 ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Fim Instalações -->
+                                </div>
+                                <!-- Fim Corpo Tab -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix "></div>
+                </form>
+                <div class="panel-footer margtop10">
+                    <button type="button" class="btn bluebtn btn-primary mt10 btn-xs right" data-ng-disabled="formPolo.$invalid" data-ng-if="cadastro" data-ng-click="salvar(polo)">
+                      <i class="fa fa-save"></i> {{'BTN_SALVAR' | translate}} 
+                    </button>
+                                <button type="button" class="btn bluebtn btn-primary mt10  btn-xs right" data-ng-if="edicao" data-ng-disabled="formPolo.$invalid" data-ng-click="alterar(polo)">
+                      <i class="fa fa-save"></i> {{'BTN_ALTERAR' | translate}} 
+                    </button>
+
+                    <button back type="button" class="btn padding10  mt10 btn-default btn-xs "><i class="fa fa-remove"></i> {{'BTN_CANCELAR' | translate}} 
+                    </button>
+                </div>
+                <!-- /.panel-footer -->
+                <!-- Fim Conteudo Polo -->
+            </div>
+            <!-- /.panel-body -->
+
+        </div>
+        <!-- /.panel -->
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- / row -->

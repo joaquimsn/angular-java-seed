@@ -1,0 +1,35 @@
+<!-- Modal -->
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="fechar()">&times</button>
+  <h2 class="modal-title"><i class="fa fa-key lgrey"></i> Esqueceu a senha ?</h2>
+</div>
+<div class="modal-body">
+  <form name="formResetSenha" method="post">
+    <header class="section-header">
+      <h3 class="section-title-modal normal"> Informe seu CPF</b> abaixo para redefinir sua senha</h3>
+
+    </header>
+
+    <input type="text" class="form-control margtop5" placeholder="{{'LBL_USUARIO' | translate}}"
+            name="cpf"
+            data-ng-model="documento.cpf"
+            required
+            data-mask="999.999.999-99"
+            restrict="reject"
+            data-clean="true"
+            data-cpf/>
+
+    <div data-ng-messages="formResetSenha.cpf.$error" data-ng-if="formResetSenha.cpf.$touched && !submitted">
+      <div ng-messages-include="/extranetead-admin/partials/main/mensagem-validacao"></div>
+    </div>
+  </form>
+   <div class="margtop10">
+    <show-message data-show="localMessage.show" data-nivel="localMessage.nivel" data-text="localMessage.text" />
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-default" type="button" data-ng-click="fechar()">Cancelar</button>
+  <button class="btn bluebtn white" type="" data-ng-click="resetarSenha(documento)" data-ng-disabled="formResetSenha.$invalid || disabled">Enviar</button>
+</div>
+<!-- modal -->

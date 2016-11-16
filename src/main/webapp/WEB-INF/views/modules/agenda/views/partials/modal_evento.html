@@ -1,0 +1,41 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-ng-click="fechar()">×</button>
+    <h2 class="modal-title"><i class="fa fa-check lgrey"></i> Modalidades </h2>
+  </div>
+  <div class="modal-body">
+    <div class="clearfix"></div>
+  <div class="margtop10 ">
+    <ul class="padding0">
+      <li>
+        <div class=" dropwidth02">
+          <ul class="droplist col-md-12  evento_home" data-ng-repeat="evento in ::eventos track by $index">
+             <li class="clearfix">
+                     <div class=" blue bold caps">{{evento.agenda.modalidades[0].titulo}}</div> 
+                      <h5 class="title size13 orange ">{{evento.title}}</h5>
+                      <div class="info margtop5">
+                        <p class="desc size11 lh1b">{{evento.agenda.descricao}}</p> 
+                      </div>
+                    </li>
+
+          </ul>
+
+        </div>
+      
+      </li>
+    </ul>
+  </div>
+   <div class="clearfix"> </div>
+  </div>
+  <div class="clearfix"> </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()"><i class="fa fa-undo"></i> Voltar</button>
+  </div>
+</div>
+
+
+
+
+
+
+

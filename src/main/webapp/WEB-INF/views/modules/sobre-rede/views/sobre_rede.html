@@ -1,0 +1,104 @@
+<section id="telas_internas" class="telas_internas" data-scroll-top >
+    <article>
+        <section id="menutabprincipal" class="menutabprincipal3">
+            <div class="container">
+                <article>
+                    <div class="col-md-12 offset-0">
+                         <div class="breadcrub">
+                            <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                                <senac-breadcrumb></senac-breadcrumb>
+                            </div>
+                            <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                                <senac-busca-textual></senac-busca-textual>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </article>                    
+            </div>
+        </section>
+        <div class="container nav_internas margbottom40">
+            <div class="clearfix"></div>
+            <!-- Corpo Tab -->
+            <!-- Tab Estrategias de Vendas -->
+            <div id="" class="margtop20 ">
+                <!-- LEFT CONTENT -->
+                <div class="col-md-8 col-lg-9 offset-4">
+
+                    <senac-apresentacao id="CARACT_REDE"></senac-apresentacao>
+                    <senac-apresentacao id="PANORA_REDE"></senac-apresentacao>
+
+
+
+                   
+                    <!-- /.section-description -->
+                    <div class="clearfix"></div>
+                    <div class="divider">
+                        <!-- divider -->
+                    </div>
+                    <header class="section-header margtop20 ">
+                        <h2 class="section-title normal"> Documentação da Rede</h2>
+                        <div class="spacer_left margbottom20"></div>
+                    </header>
+                    <div class="well well-lg degrade shadow  col-md-12 "  data-ng-show="listaDocumento && listaDocumento.length > 0">
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 dark slim textjustify size12">
+                               <div class="col-md-3 col-sm-6" data-ng-repeat="doc in ::listaDocumento  track by $index">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" checklist-model="docSobreRede" checklist-value="doc.id"/>{{doc.titulo}}
+                                        </label>
+                                    </div>
+                                </div>                                
+                            </div>
+                        <div class="clearfix"></div>
+                        <hr class="half-margins">
+                        <div class="padding10">
+                            <button data-ng-click="baixarZipDocumentos()" class="btn-lg right  center" ng-class="{'btn-grey':(docSobreRede.length == 0), bluebtn:(docSobreRede.length > 0)}" data-ng-disabled="docSobreRede.length == 0"><i class="fa fa-download size11 margright5"></i> DOWNLOAD</button> 
+                             <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="well well-lg degrade shadow  col-md-12 "  data-ng-hide="listaDocumento && listaDocumento.length > 0">
+                            Sem documentos cadastrados
+                    </div>                    
+                </div>
+                <!-- END OF LEFT CONTENT -->
+                <!-- RIGHT CONTENT -->
+                <div class="col-md-4 col-lg-3 offset-2" data-ng-hide="ultimosVideos.length == 0">
+                    <div class="pagecontainer2 paymentbox grey">
+                        <div class="padding15">
+                            <h2 class=" center size20 blue normal "> Vídeos</h2>
+                            <div class="line1"></div>
+                            <div data-ng-repeat="video in ultimosVideos">
+                                <div class="margbottom20">
+                                    <div class="col-md-12  ">
+                                        <article class="education ">
+                                            <header>
+                                                <h4 class="title dark">{{video.titulo}}</h4>
+                                            </header>
+                                            <img src="{{apiUrl + video.imagemThumbnail.linkDownload}}" alt="" class="fwimg pointer" data-ng-click="abrirModalVideo(video)">
+                                            <span class="opensans size10 orange">Clique na imagem para ver o vídeo</span>
+                                            
+                                            <p>{{video.descricao}}</p>
+                                            
+                                            <div class="center  margtop15  margbottom10">
+                                                  <a data-ng-href="{{apiUrl + video.linkDownload}}"  senac-download-signature  class="btn-grey lblue right margbottom10 margtop10" data-ng-show="video.linkDownload"  target="_blank">Download</a> 
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="line4"></div>
+                                </div>
+                            </div>                                
+                            <div class="center margtop20 margbottom10">
+                                <a class=" bluebtn  btn-lg caps center " title="Todos os videos" data-ng-href="{{systemUri.video()}}"><i class="fa fa-plus size11 margright5" aria-hidden="true"></i>VEJA TODOS OS VÍDEOS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF RIGHT CONTENT -->
+            </div>
+            <!-- Fim Tab Estrategias de Vendas -->
+            <div class="clearfix"></div>
+        </div>
+    </article>
+</section>

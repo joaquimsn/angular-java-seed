@@ -1,0 +1,10 @@
+{
+    "T_LOGIN": "LOGIN",
+    "T_SOLICITACAO_ACESSO": "Solicitação de acesso",
+    "IDENTIFICACAO_SISTEMA": "EXTRANET EAD",
+    "LBL_USUARIO": "CPF",
+    "LBL_SENHA": "Senha",
+    "BTN_ENTRAR": "Entrar",
+    "BTN_PRIMEIRO_ACESSO": "Solicitar acesso",
+    "BTN_ESQUECI_SENHA": "Esqueci minha senha"
+}

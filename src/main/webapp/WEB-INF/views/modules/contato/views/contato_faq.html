@@ -1,0 +1,42 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas">
+  <div class="col-md-12 offset-0  ">
+
+      <senac-apresentacao id="FAQ"></senac-apresentacao>
+  
+  </div>
+  <div class="clearfix"></div>
+  <div class="divider">
+    <!-- divider -->
+
+  </div>
+
+  <div class="col-md-12 offset-0 size13 slim">  
+    <!-- Accodion -->
+    <div class="acordion_senac ">
+      <uib-accordion >
+          <uib-accordion-group is-open="false" class="" data-ng-repeat="faqAgrupado in ::listaFaq track by $index">
+            <uib-accordion-heading>
+              <div class="nivel1  ">
+                  <span>{{faqAgrupado.modalidade.titulo}}</span> <span class="collapsearrow"></span>
+              </div>                            
+            </uib-accordion-heading>
+              <div>
+              <uib-accordion>                            
+                <uib-accordion-group is-open="false" data-ng-repeat="faq in faqAgrupado.faqs">
+                    <uib-accordion-heading >
+                      <div class="nivel2">
+                          <span>{{faq.pergunta}}</span> <span class="collapsearrow"></span>
+                      </div>
+                    </uib-accordion-heading>
+                      <div class="imgmobile"> 
+                        <span data-ng-bind-html="faq.resposta"></span> <span class="collapsearrow"></span>
+                      </div>
+                  </uib-accordion-group> 
+                  </uib-accordion>                            
+              </div>                            
+          </uib-accordion-group>                 
+        </uib-accordion>
+    </div>
+  </div>
+</div>

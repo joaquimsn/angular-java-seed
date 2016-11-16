@@ -1,0 +1,100 @@
+.switch {
+    border: 1px solid #ccc;
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    overflow: visible;
+    width: 100px;
+    height: 20px;
+    /* padding: 2px; */
+    margin: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+    /* box-shadow: rgba(0,0,0,0.1) 0 3px 2px; */
+    transition: 0.3s ease-out all;
+    -webkit-transition: 0.3s ease-out all;
+    background-color: #eeeeee;
+    /* top: -1px; */
+    /* margin-top: 3px; */
+}
+  
+
+
+
+.switch.checked , .switch small {
+    background: #337ab7;
+
+
+}
+/*adding a wide width for larger switch text*/
+
+.switch.wide {
+    width: 80px;
+}
+
+.switch small {
+    background: #ffffff;
+    border-radius: 0px;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); */
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    /* top: -1px; */
+    left: 0px;
+    transition: 0.3s ease-out all;
+    -webkit-transition: 0.3s ease-out all;
+}
+
+
+.switch.checked small {
+    left: 50px;
+}
+
+
+/*wider switch text moves small further to the right*/
+
+.switch.wide.checked small {
+    left: 52px;
+}
+
+
+/*styles for switch-text*/
+
+.switch .switch-text {
+     box-shadow: rgba(0,0,0,0.1) 0 3px 2px;
+    font-size: 13px;
+}
+
+.switch .off {
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 2px;
+    z-index: 0;
+    color: #777;
+    font-size: 11px;
+}
+
+.switch .on {
+    display: none;
+     z-index: 0;
+    color: #fff;
+    position: absolute;
+    top: 1px;
+    left: 10%;
+    font-size: 11px;
+
+}
+
+.switch.checked .off {
+    display: none;
+}
+
+.switch.checked .on {
+    display: block;
+}
+
+.switch.disabled {
+    opacity: .50;
+    cursor: not-allowed;
+}

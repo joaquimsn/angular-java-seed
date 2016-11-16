@@ -1,0 +1,59 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-ng-click="fechar()">×</button>
+    <h2 class="modal-title"><i class="fa fa-bell-o lgrey"></i> {{curso.titulo}} </h2>
+  </div>
+  <div class="modal-body">
+    <div class="clearfix"></div>
+    <div class="margtop10">
+      {{curso.objetivo}}
+    </div>   
+    <div class="margtop10">      
+      <header class="section-header" data-ng-show="curso.segmentoDn">
+        <h2 class="section-title-modal normal">Segmento</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+      <div class="margtop10">{{curso.segmentoDn}}</div>
+    </div>      
+    <div class="margtop10">      
+      <header class="section-header" data-ng-show="curso.preReq">
+        <h2 class="section-title-modal normal">Pé-requisitos</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+      <div class="margtop10">{{curso.preReq}}</div>
+    </div>
+    <div class="margtop10" data-ng-show="curso.cargaHoraria">      
+      <header class="section-header">
+        <h2 class="section-title-modal normal">Carga horária</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+      <div class="margtop10">{{curso.cargaHoraria}}</div>
+    </div>    
+    <div class="margtop10" data-ng-show="curso.publicoAlvo">      
+      <header class="section-header">
+        <h2 class="section-title-modal normal">Público alvo</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+      <div class="margtop10">{{curso.publicoAlvo}}</div>
+    </div>  
+    <div class="margtop10" data-ng-show="curso.mercadoTrab">      
+      <header class="section-header">
+        <h2 class="section-title-modal normal">Mercado de trabalho</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+      <div class="margtop10">{{curso.mercadoTrab}}</div>
+    </div>    
+    <div class="margtop10" data-ng-show="curso.docMatr">      
+      <header class="section-header">
+        <h2 class="section-title-modal normal">Documentação</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+      <div class="margtop10">{{curso.docMatr}}</div>
+    </div>        
+      
+  </div>
+  <div class="clearfix"> </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()"><i class="fa fa-undo"></i> Voltar</button>
+  </div>
+</div>

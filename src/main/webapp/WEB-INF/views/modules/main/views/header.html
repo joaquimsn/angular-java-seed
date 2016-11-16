@@ -1,0 +1,81 @@
+<header>
+    <nav class="navbar-fixed-top shadow">
+      <div id="header-wrapper">
+        <!-- Top Mini Menu -->
+        <div class="topbar ">
+          <div class="container offset-0">
+            <div class="topbar-right">
+              <div class="top-nav clearfix">
+
+                <ul class="nav pull-right top-menu " data-ng-controller="SessaoUsuarioController">
+                  <!-- user login dropdown start-->
+                  <li class="dropdown">
+                    <a data-toggle="open" data-target-class="dropdown" class="dropdown-toggle size10">
+                      <span class="size10  grey margright5 mt-2">Bem-Vindo:</span> <img alt="Bruno Bucci Almeida" src="/extranetead-portal/static/resources/images/user-avatar.jpg">
+                      <span class="username dark">{{usuario.nome}}</span>
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu"  data-ng-controller="MenuController">
+                      <li>
+                        <div class="dropwidth01">
+                          <div class="  degrade clearfix">
+                            <ul class="droplist col-md-12 center">
+                              <li class="center userlogago"><img alt="" src="/extranetead-portal/static/resources/images/user-avatar.jpg"> </li>
+                            </ul>
+                            <ul class="droplist col-md-12 ">
+                              <li class="center "><a data-ng-href="{{systemUri.gestaoPerfil()}}" class="mt-5 green"><i class="fa fa-edit"></i>  Meus Dados</a></li>
+                            </ul>
+                          </div>
+                            <ul class="droplist col-md-12">
+                              <li data-ng-repeat="menu in ::menusGestaoUsuario | orderBy: 'ordem'">
+                                <a data-ng-href="{{applicationSettings.context + menu.link}}"
+                                  data-ng-click="setMenuSelecionado(menu)"
+                                  data-menu-selecionado><i class="{{menu.icon}}"></i>{{menu.nome}}</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <div class="padding5 center">
+                          <a data-ng-click="sair()" type="button" class="btn btn-danger  btn-xs  mt5"> <i class="fa fa-sign-out"></i> Sair</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- user login dropdown end -->
+                </ul>
+
+              </div>
+            </div>
+            <!-- /.topbar-right -->
+          </div>
+          <!-- /.container -->
+        </div>
+        <!-- /.topbar -->
+        <div class="container" data-ng-controller="MenuController">
+          <div class="navbar mtnav">
+            <!-- Navegação -->
+            <div class="navbar-header">
+              <button data-toggle="in" data-target-class="navbar-collapse" class="navbar-toggle" type="button">
+                <i class="fa fa-bars size30 mt-10"></i>
+              </button>
+              <a data-ng-href="{{systemUri.home()}}" class="navbar-brand"><img src="/extranetead-portal/static/resources/images/senac.png" alt="Logo" class="logo" /></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+              <ul class="nav navbar-nav navbar-left nav_new">
+              <li data-ng-repeat="menu in ::menusPrincipais | orderBy: 'ordem'">
+                <a data-ng-href="{{applicationSettings.context + menu.link}}"
+                  data-ng-click="setMenuSelecionado(menu)" data-toggle="in" data-target-class="navbar-collapse"
+                  data-menu-selecionado>{{menu.nome}}</a>
+              </li>
+            </ul>
+            </div>
+          </div>
+          <!-- Navegação -->
+        </div>
+        <!-- navbar mtnav -->
+      </div>
+      <!-- container -->
+      </div>
+      <!-- #header -->
+    </nav>
+  </header>

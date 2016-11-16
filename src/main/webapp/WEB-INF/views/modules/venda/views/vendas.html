@@ -1,0 +1,36 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas">
+  <div class="margtop10">
+    <!-- LEFT CONTENT -->
+    <div class="col-md-9 offset-0">
+      <senac-apresentacao id="ESTRA_VENDA"></senac-apresentacao>
+      <div class="clearfix"></div>
+    </div>
+    <!-- END OF LEFT CONTENT -->
+    <!-- RIGHT CONTENT -->
+    <div class="col-md-3 offset-2" data-ng-controller="DicaVendaController">
+      <div class="pagecontainer2 paymentbox grey" senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro" data-ng-hide="filtroResult.data.length ==0">
+            <div class="padding15">
+              <h2 class=" center size20 blue normal ">{{"T_DICA_VENDA" | translate}}</h2>
+              <div class="line1"></div>
+              <div class="margbottom10" data-ng-repeat="dicaVenda in filtroResult.data track by $index">
+                <div class="col-md-12  offset-1">
+                  <article class="education ">
+                    <header>
+                      <h4 class="title dark bold" data-ng-bind="dicaVenda.titulo" />
+                    </header>
+                    <p class="grey2 size12 lh2 margtop10">{{dicaVenda.descricao | SenacTextOverflow:80}}</p>
+                    <a data-ng-href="{{systemUri.dicaVenda()}}" class="center size11 right lblue">{{"BTN_SABIA_MAIS" | translate}}<i class="fa fa-angle-double-right slim"></i></a>
+                  </article>
+                </div>
+                <div class="clearfix"></div>
+                <div class="line4"></div>
+              </div>
+            </div>
+            <div class="center margbottom20 ">
+              <a class=" bluebtn  btn-lg caps center " title="Todas as Vendas" data-ng-href="{{systemUri.dicaVenda()}}"><i class="fa fa-plus size11  margright5" aria-hidden="true"></i> VEJA <b>TODAS AS VENDAS</b></a>
+            </div>
+      </div>
+      <!-- END OF RIGHT CONTENT -->
+    </div>
+  </div>

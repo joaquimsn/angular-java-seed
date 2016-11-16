@@ -1,0 +1,102 @@
+<div class="bgfull1" data-scroll-top>
+  <!-- section telas_internas 
+ ================================================== -->
+  <section id="menutabprincipal" class="menutabprincipal3 ">
+    <div class="container ">
+       <div class="breadcrub">
+                    <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                         <senac-breadcrumb></senac-breadcrumb>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                         <senac-busca-textual></senac-busca-textual>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+    </div>
+  </section>
+
+  <div class="container nav_internas ">
+    <div class="col-md-12 offset-4 " senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro">
+      <header class="section-header margtop20 ">
+        <h2 class="section-title normal ">{{'T_GESTAO_USUARIO' | translate}}</h2>
+        <div class="spacer_left margbottom20 "></div>
+      </header>
+
+      <div class="col-md-12   degrade shadow padding20 margbottom10">
+        <div class="col-md-12 margbottom10">
+          <label>{{'CBX_DEPARTAMENTO' | translate}}</label>
+          <select class="form-control" data-ng-model="search.departamentoSelecionado" data-ng-options="polo.nome for polo in departamentos track by polo.id" data-ng-change="buscarPorFiltro(configurarSearchDefault(search))">
+            <option value="" label="{{'LBL_CBX_SELECIONE' | translate}}"></option>
+          </select>
+        </div>
+
+      </div>
+      <div class="col-md-12 offset-0 padding5 margbottom10 " data-ng-if="search.departamentoSelecionado" data-senac-paginacao>
+        <div class="clearfix "></div>
+        <div class="divider "></div>
+        
+        <div class="table-responsive mt-6 ">
+          <table class="table table-bordered table-hover table-striped" data-senac-ordenacao>
+            <thead>
+              <tr>
+                <th class="small " data-senac-item-ordenacao="du.usuario.nome">
+                  {{'LBL_NOME' | translate}}
+                </th>
+
+                <th class="small center sorting " data-senac-item-ordenacao="cpf">
+                  {{'LBL_CPF' | translate}}
+                </th>
+                <th class="small center sorting " data-senac-item-ordenacao="du.usuario.dataCadastro">
+                  {{'LBL_DT_CADASTRO' | translate}}
+                </th>
+                <th class="small center sorting " data-senac-item-ordenacao="email">
+                  {{'LBL_EMAIL' | translate}}
+                </th>
+                <th class="small center sorting " data-senac-item-ordenacao="du.usuario.status">
+                  {{'LBL_STATUS' | translate}}
+                </th>
+                <th class="small center ">
+                  {{'LBL_EDITAR' | translate}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="usuario in filtroResult.data track by $index">
+                <td class="titulo_table" data-ng-bind="usuario.nome"/>
+                <td class="center" data-ng-bind="usuario.cpf"/>
+                <td class="center" data-ng-init="converterData(usuario)" data-ng-bind="(usuario.dataCadastro | date:dd/MM/yyyy)"></td>
+                <td class="center" data-ng-bind="usuario.email"/>
+                <td class="center">
+                  <div>
+                    <switch name="enabled" data-ng-model="usuario.status" on="Ativo" off="Inativo" data-ng-change="alterarStatus(usuario)"></switch>
+                  </div>
+                </td>
+
+                <td class="center">
+                  <a data-ng-href="{{systemUri.gestaoUsuarioEdicao(usuario.id)}}" title="{{'LBL_EDITAR' | translate}}" class="tooltips btn btn-default btn-xs" tooltip-placement="left" uib-tooltip="{{'LBL_EDITAR' | translate}}">
+                    <i class="fa fa-pencil lblue size14"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-12 center">
+          <uib-pagination total-items="filtroResult.totalCount"  max-size="(isMobile ? applicationSettings.maxPaginationMobile : applicationSettings.maxPaginationDesktop)" force-ellipses="true" boundary-links="true" items-per-page="filtroResult.maxPageSize" ng-model="pagina" 
+                         ng-change="trocarPagina()" num-pages class="pagination-sm" 
+          previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+          </uib-pagination>
+        </div>
+    </div>
+    <div>
+        <div class="clearfix "></div>
+        <div class="divider "></div>
+
+        <div class="padding10 ">
+          <a data-ng-href="{{systemUri.gestaoUsuarioAprovacao()}}" class=" btn-grey  right center margright5 bold"><i class="fa fa-check size11 margright5 "></i>{{'BTN_APROVAR_SOLICITACAO' | translate}}<span class="badge right margleft15 " data-ng-bind="solicitacoesAcesso.length"></span></a>
+          <a data-ng-href="{{systemUri.gestaoUsuarioCadastro()}}" class=" btn-grey  right center margright5 bold"><i class="fa fa-user-plus size11 margright5 " ></i>{{'BTN_INCLUIR_USUARIO' | translate}}</a>
+        </div>
+    </div>
+  </div>
+</div>

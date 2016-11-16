@@ -1,0 +1,28 @@
+<senac-nivel-ensino-submenu></senac-nivel-ensino-submenu>
+<div class="container nav_internas" data-scrolltop>
+  <div class="ro">
+    <!-- LEFT CONTENT -->
+    <div class="col-md-12 margtop10">
+      <div class="col-md-4 offset-0 ">
+        <img data-ng-src="{{apiUrl + nivelEnsino.imagem.linkDownload}}" alt="Título da Notícia" class="img-responsive margleft-15" data-toggle="tooltip" data-placement="bottom" title=""/>
+      </div>
+      <div class="col-md-8 textjustify slim ">
+        <senac-apresentacao id="{{codigoApresentacao}}"></senac-apresentacao>
+      </div>
+      <div class="clearfix"></div>
+      <div class="divider">
+        <!-- divider -->
+      </div>
+      <!-- Necessário separar em dois template para atender padrão do layout definido, pois não tem padrão nas informações seguindo a regra de negocio-->
+      <ng-include src="'/extranetead-portal/partials/nivel-ensino/detalhe_nivel_selecionado'" 
+                  data-ng-if="nivelEnsino.modalidades.length >= 1 && nivelEnsino.path !== 'tecnico'">
+      </ng-include>
+      <ng-include src="'/extranetead-portal/partials/nivel-ensino/detalhe_nivel_selecionado_tecnico'" 
+                  data-ng-if="nivelEnsino.modalidades.length === 1 && nivelEnsino.path === 'tecnico'">
+      </ng-include>
+
+      <!-- menu tab -->
+    </div>
+    <!-- END OF LEFT CONTENT -->
+  </div>
+</div>

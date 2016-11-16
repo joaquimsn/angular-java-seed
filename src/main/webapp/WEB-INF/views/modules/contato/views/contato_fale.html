@@ -1,0 +1,79 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas">
+  <header class="section-header margtop20">
+    <h2 class="section-title normal"> Fale Conosco</h2>
+    <div class="spacer_left margbottom20"></div>
+  </header>
+  <div class="col-md-12 offset-0  border degrade">
+    <div class="padding10">
+      <show-message data-show="localMessage.show" data-nivel="localMessage.nivel" data-text="localMessage.text"></show-message>
+    </div>
+
+    <form class="form-horizontal" method="POST" name="formChamado" data-ng-hide="enviado">
+      <div class="col-md-12 offset-0">
+        <div class="col-md-6 margbottom10 ">
+          <div class="form-group">
+            <div class="col-md-12  bold margbottom10">Polo Origem</div>
+            <div class="col-md-12">
+              <select class="form-control" data-ng-options="departamentoOrigem.nome for departamentoOrigem in departamentos track by departamentoOrigem.id"
+                  data-ng-model="chamado.departamentoOrigem" name="departamentoOrigem" required>
+                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+              </select>
+              <div data-ng-messages="formChamado.departamentoOrigem.$error" data-ng-if="formChamado.departamentoOrigem.$touched && !submitted">
+                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+              </div>
+            </div>
+          </div>
+
+     
+        </div>
+
+            <div class="col-md-6 margbottom10 ">
+    
+
+          <div class="form-group">
+            <div class="col-md-12  bold margbottom10">Modalidades</div>
+            <div class="col-md-12">
+              <select class="form-control" data-ng-options="modalidade.titulo for modalidade in modalidades track by modalidade.id"
+                      data-ng-model="chamado.modalidade"
+                      name="modalidade" required>
+                      <option value="">Selecione</option>
+              </select>
+
+              <div data-ng-messages="formChamado.modalidade.$error" data-ng-if="formChamado.modalidade.$touched && !submitted">
+                <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+       <div class="clearfix"></div>
+        <div class="line3"></div>
+
+      <div class="col-md-12 ">
+        <div class="margtop10">
+          <span class="size14  bold "> Dúvida </span>
+          <textarea class="form-control margtop10" data-ng-model="chamado.mensagem" name="mensagem" rows="4" required maxlength="800" ng-maxlength="800" minlength="1" ng-trim="true"></textarea>
+          <b><small> [{{chamado.mensagem.length || 0}} / 800]</small></b>            
+          <div data-ng-messages="formChamado.mensagem.$error" data-ng-if="formChamado.mensagem.$touched && !submitted">
+            <div ng-messages-include="/extranetead-portal/partials/main/mensagem-validacao"></div>
+          </div>
+            <div class="clearfix"></div>
+          <button class="btn bluebtn right caps margbottom10 margtop10" data-ng-disabled="formChamado.$invalid" data-ng-click="registrarChamado(chamado)">Enviar</button>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </form>
+
+    <div data-ng-show="enviado" class="col-md-12 center">
+       <button class="bluebtn caps margbottom20"  data-ng-click="resetarFormulario(formChamado)">Nova mensagem</button>
+    </div>
+  </div>
+
+    <div class="clearfix"></div>
+  <div class="divider"></div>
+  <!-- divider -->
+</div>

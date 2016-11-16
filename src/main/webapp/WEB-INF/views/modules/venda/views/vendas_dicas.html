@@ -1,0 +1,31 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas" senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro">
+    <div>
+        <div class="col-md-12 offset-0">
+            <senac-apresentacao id="DICA_VENDA"></senac-apresentacao>
+        </div>
+        <div class="divider">
+            <!-- divider -->
+        </div><br>
+        <div data-ng-repeat="dicaVenda in filtroResult.data track by $index">
+            <div class="col-md-12  offset-0 ">
+                <span class="dark bold size18 bold block" data-ng-bind="dicaVenda.titulo"></span>
+                <p id="{{dicaVenda.id}}" class="size11 grey">
+                    <i class="fa fa-calendar"></i>  {{(dicaVenda.dataCadastro | date:'dd/MM/yyyy')}}
+                </p>                
+                <span data-ng-bind="dicaVenda.descricao"></span>
+                <p>
+                <a class="size10 mt10"> <i class="fa fa-map-marker"></i> {{dicaVenda.departamento.nome}}</a>                
+                </p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="line4"></div><br>
+        </div> 
+
+        <div class="col-md-12 center" data-senac-paginacao>
+            <uib-pagination total-items="filtroResult.totalCount"  max-size="(isMobile ? applicationSettings.maxPaginationMobile : applicationSettings.maxPaginationDesktop)" force-ellipses="true" boundary-links="true" items-per-page="filtroResult.maxPageSize" ng-model="pagina" ng-change="trocarPagina()" num-pages class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                last-text="&raquo;">
+            </uib-pagination> 
+        </div>
+    </div>
+</div>

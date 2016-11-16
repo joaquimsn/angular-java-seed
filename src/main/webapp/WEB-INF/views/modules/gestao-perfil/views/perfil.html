@@ -1,0 +1,89 @@
+<div class="bgfull1" data-scroll-top>
+  <section id="telas_internas" class="telas_internas">
+    <article>
+
+      <section id="menutabprincipal" class="menutabprincipal3">
+        <div class="container">
+          <article>
+            <div class="col-md-12 offset-0">
+               <div class="breadcrub">
+                    <div class="col-md-8 col-lg-9 col-sm-8 margtop10">
+                         <senac-breadcrumb></senac-breadcrumb>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 mt2 ">
+                         <senac-busca-textual></senac-busca-textual>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </article>
+      </section>
+
+      <div class="container nav_internas margbottom40" style="min-height: 500px">
+
+        <header class="section-header margtop10 ">
+          <h2 class="section-title normal">{{T_PERFIL_USUARIO | translate}}</h2>
+          <div class="spacer_left margbottom20"></div>
+        </header>
+
+        <div class="col-md-12 degrade">
+          <div class="row  shadow">
+            <div class="panel-heading col-md-3 col-lg-2 center mt20">
+              <img src="/extranetead-portal/static/resources/images/user-avatar.jpg" class="img-circle">
+              <br>
+              <h3 class=" dark bold" data-ng-bind="usuario.nome"></h3>
+              <p class="grey mt-5">{{'LBL_PERFIL' | translate}}</p>
+              <p class="green mt-5">{{'LBL_SOMENTE_LEITURA' | translate}}</p>
+
+            </div>
+            <div class="panel-body col-md-9 col-lg-10">
+
+              <div class="row">
+                <div class="col-md-12">
+
+                  <ul class="list-group margtop10  ">
+                    <li class="size14 padding5 dark">
+                    </li>
+                    <li class="list-group-item"><i class="fa fa-user lblue margright5 size10" aria-hidden="true"></i> {{'LBL_NOME' | translate}}: <b>{{usuario.nome}}</b> </li>
+                    <li class="list-group-item"> <i class="fa fa-envelope-o lblue margright5 size10" aria-hidden="true"></i> {{'LBL_EMAIL' | translate}}: <b>{{usuario.email}}</b></li>
+                    <li class="list-group-item"><i class="fa fa-credit-card lblue margright5 size10" aria-hidden="true"></i> {{'LBL_CPF' | translate}}: <b>{{usuario.cpf}}</b></li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+  <div class="clearfix"></div>
+           <div class="margbottom20"> 
+                <a data-ng-href="{{systemUri.gestaoPerfilAlteracaoSenha(usuario.cpf)}}" class="btn-grey margright10 bold " data-dismiss="modal" aria-hidden="true"><i class="fa fa-key  orange hidden-xs"></i> {{'BTN_ALTERAR_SENHA' | translate}}</a>
+                <a data-ng-href="{{systemUri.gestaoPerfilEdicao()}}" class="btn-grey  bold n" id="password_modal_save"><i class="fa blue fa-edit hidden-xs "></i> {{'BTN_EDITAR_PERFIL' | translate}}</a>
+              </div>
+
+
+
+          
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="divider">
+          <!-- divider -->
+
+        </div>
+
+    </article>
+  </section>
+  </div>
+
+</div>
+
+<div class="clearfix"></div>
+
+<section class="footerbg lcfix">

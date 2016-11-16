@@ -1,0 +1,64 @@
+<senac-submenu></senac-submenu>
+<div class="container nav_internas" data-ng-controller="FinanceiroController">
+
+  <div class="clearfix"></div>
+  <!-- Corpo Tab -->
+
+  <!-- Tab Estrategias de Vendas -->
+  <div id="" class="">
+
+    <!-- LEFT CONTENT -->
+    <div class="col-md-12 offset-0 ">
+
+      <header class="section-header margtop20">
+        <h2 class="section-title normal"> Relatório Financeiro</h2>
+        <div class="spacer_left margbottom20"></div>
+      </header>
+
+      <div class="col-md-12  offset-0 degrade shadow padding5 margbottom10">
+
+        <!-- LEFT CONTENT -->
+    
+
+
+
+            <div class="col-md-6  ">
+              <div class="col-md-12 margbottom10">
+           
+                <div class="col-md-12  bold offset-0 margbottom10 margtop10">DR Sede:</div>
+                <select class="form-control" ng-model="drSelecionada" ng-change="carregarMeses()">
+                  <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                  <option ng-repeat="uf in drs" value="{{uf}}">{{uf}}</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="col-md-6  ">
+       <div class="col-md-12 margbottom10 ">
+           
+              <div class="col-md-12  bold offset-0 margbottom10 margtop10">Selecione o mês:</div>
+              <select class="form-control" ng-model="mesSelecionado">
+                <option value="">{{'LBL_CBX_SELECIONE' | translate}}</option>
+                <option ng-repeat="mes in meses" value="{{mes}}">{{mes | date : 'MMM-yyyy'}}</option>
+              </select>
+            </div> </div>
+
+         
+
+
+        <div class="clearfix"></div>
+
+        <div class="col-md-12 textright">
+          <div class="margbottom20 margtop15 margright10"> <a class="bluebtn caps  " ng-click="exibirRelatorio()" target="_blank"><i class="fa fa-file-pdf-o  margright5"></i>Gerar</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="clearfix"></div>
+  <div class="divider"></div>
+  <!-- divider -->
+
+</div>
+

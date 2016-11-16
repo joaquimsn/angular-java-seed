@@ -1,0 +1,62 @@
+<header class="section-header margtop20 ">
+    <h2 class="section-title normal"> Lançamento projeção</h2>
+    <div class="spacer_left margbottom20"></div>
+</header>
+
+<div class="table-responsive margtop20">
+    <div class="margtop20 margbottom10">
+        <show-message data-show="localMessage.show" data-nivel="localMessage.nivel" data-text="localMessage.text">
+        </show-message>
+    </div>
+    <table class="table table-bordered table-hover table-striped  shadow size12" id="example1">
+        <thead>
+        </thead>
+        <thead>
+            <tr>
+                <th class=" size14  center caps"> Polos</th>
+                <th class=" size14  center caps">Livres</th>
+                <th class=" size14  center caps">Técnicos</th>
+                <th class=" size14  center caps">Graduação</th>
+                <th class=" size14  center caps">Pós-Graduação</th>
+                <th class=" size14  center caps">Extensão</th>
+
+                <th class="tabledit-toolbar-column"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr data-ng-repeat='projecao in projecoesLancamento track by $index'>
+                <td class="center">
+                    <span class="tabledit-span tabledit-identifier" data-ng-bind='projecao.departamento.nome'></span>
+                </td>
+                <td class="center">
+                    <span class="tabledit-span tabledit-identifier" data-ng-hide='projecao.edicao' data-ng-bind='projecao.quantidadeLivre'></span>
+                    <input class="tabledit-input tabledit-identifier input-full" type="number" min="0" data-ng-show='projecao.edicao' data-ng-model='projecao.quantidadeLivre'>
+                </td>
+                <td class="center">
+                    <span class="tabledit-span tabledit-identifier" data-ng-hide='projecao.edicao' data-ng-bind='projecao.quantidadeTecnico'></span>
+                    <input class="tabledit-input tabledit-identifier input-full" type="number" min="0" data-ng-show='projecao.edicao' data-ng-model='projecao.quantidadeTecnico'>
+                </td>
+                <td class="center">
+                    <span class="tabledit-span tabledit-identifier" data-ng-hide='projecao.edicao' data-ng-bind='projecao.quantidadeGraduacao'></span>
+                    <input class="tabledit-input tabledit-identifier input-full" type="number" min="0" data-ng-show='projecao.edicao' data-ng-model='projecao.quantidadeGraduacao'>
+                </td>
+                <td class="center">
+                    <span class="tabledit-span tabledit-identifier" data-ng-hide='projecao.edicao' data-ng-bind='projecao.quantidadePos'></span>
+                    <input class="tabledit-input tabledit-identifier input-full" type="number" min="0" data-ng-show='projecao.edicao' data-ng-model='projecao.quantidadePos'>
+                </td>
+                <td class="center">
+                    <span class="tabledit-span tabledit-identifier" data-ng-hide='projecao.edicao' data-ng-bind='projecao.quantidadeExtensao'></span>
+                    <input class="tabledit-input tabledit-identifier input-full" type="number" min="0" data-ng-show='projecao.edicao' data-ng-model='projecao.quantidadeExtensao'>
+                </td>
+                <td style="white-space: nowrap; width: 1%;">
+                    <div class="tabledit-toolbar btn-toolbar center">
+                        <div class="btn-group btn-group-sm" style="float: none;" data-ng-hide='projecao.edicao'>
+                            <button type="button" class="tabledit-edit-button btn btn-sm btn-default active center" data-ng-click="projecao.edicao = !projecao.edicao"><span class="glyphicon glyphicon-pencil"></span></button>
+                        </div>
+                        <button type="button" data-ng-show='projecao.edicao' class="tabledit-save-button btn btn-sm btn-green btn-success" data-ng-click="alterarProjecao(projecao)">Salvar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>

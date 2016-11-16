@@ -1,0 +1,74 @@
+<section id="telas_internas" class="telas_internas" data-scroll-top style="min-height: 500px">
+    <article>
+        <section id="menutabprincipal" class="menutabprincipal3">
+            <div class="container">
+                <article>
+                    <div class="col-md-12 offset-0">
+                        <div class="breadcrub">
+                            <div class="col-md-8 col-lg-9  col-sm-8 margtop10">
+                              <a class="homebtn left" data-ng-href="{{systemUri.home()}}"></a>
+                              <div class="left">
+                                <ul class="bcrumbs">
+                                  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                                  <li><a data-ng-href="{{systemUri.avisos()}}" class="active">Avisos</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3 col-sm-4 mt2">
+                              <form class=" form-search" role="search">
+                                <div class="form-group center ">
+                                  <input type="text" class="form-control iconsearch" placeholder="Procurar">
+                                </div>
+                              </form>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                      </div>
+                  </article>
+              </div>
+          </section> 
+          <div class="container nav_internas margbottom40">
+                <div class="clearfix"></div>
+                <header class="section-header margtop10 ">
+                    <h2 class="section-title normal"> Últimos Avisos</h2>
+                    <div class="spacer_left margbottom20"></div>
+                </header>
+                <div class="clearfix"></div>
+                <div senac-filtro-pagina data-propriedade-filtro="configuracaoFiltro">
+                    <div class="col-md-12 offset-0 mt-10 margbottom10  " data-ng-init="search = configurarSearchDefault(search)">
+                      <div id="" class="margtop20 ">
+                        <div data-ng-repeat="aviso in filtroResult.data track by $index">
+
+                          <div class="col-md-4 col-lg-4 col-sm-6 offset-1">
+                            <div class="mt-15 padding10 border  margbottom10">
+                                <span class="gcircle"><i class="fa fa-calendar"></i></span>
+                                  <span class="size16 lato dark mt10 bold">
+                                             {{(aviso.dataPublicacao | date:"dd 'de '")}}
+                                          </span>
+                                  <span class="size16 lato dark mt10 bold capitalize">
+                                             {{(aviso.dataPublicacao | date:"MMMM, yyyy")}}
+                                          </span>
+
+                                <div class="clearfix"></div>
+                                <div  class="margtop10" style="height:150px;">
+                                  {{aviso.conteudo}}
+                                  <div class="clearfix"></div>  
+                                </div>
+                                <a class="size10 margtop5"> <i class="fa fa-map-marker"></i> {{aviso.departamento.nome}}</a>
+                            </div>
+                          </div>
+                        </div>  <div class="clearfix"></div>
+                      </div>
+                    </div>
+                <div class="clearfix"></div>
+                <div class="divider">   </div>
+
+
+                <div class="col-md-12 center" data-senac-paginacao>
+                  <uib-pagination total-items="filtroResult.totalCount"  max-size="(isMobile ? applicationSettings.maxPaginationMobile : applicationSettings.maxPaginationDesktop)" force-ellipses="true" boundary-links="true" items-per-page="filtroResult.maxPageSize" ng-model="pagina"   ng-change="trocarPagina()" num-pages class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                  </uib-pagination>
+                </div>
+            </div>
+            </div>
+    </article>
+</section>

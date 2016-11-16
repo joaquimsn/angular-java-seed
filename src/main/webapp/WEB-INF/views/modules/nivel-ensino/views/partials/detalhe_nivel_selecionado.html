@@ -1,0 +1,39 @@
+<div class="col-md-12  offset-0 tabs_internas ">
+  <!-- Lista Links Menu tab -->
+  <header class="panel-heading offset-0 onelink ">
+    <ul class="nav nav-tabs offset-0" data-ng-class="{'nav-justified': tabsModalidade.length > 1}">
+      <li data-ng-class="{'active': compararTab(tab, tabModalidadeSelecionada)}" 
+          data-ng-repeat="tab in ::tabsModalidade track by $index"
+          data-ng-click="trocarTab(tab)" class="cursor-pointer">
+        <a data-ng-class="{'active': compararTab(tab, tabModalidadeSelecionada)}" data-ng-bind="tab.titulo"></a>
+      </li>
+    </ul>
+  </header>
+  <!-- Fim Lista Links Menu tab -->
+  <!-- Corpo Tab -->
+  <div class="panel-body margbottom20 ">
+    <div class="tab-content">
+      <!-- Tab Estrategias de Vendas -->
+      <div class="tab-pane active">
+          <div class="margbottom20">
+            <div class="col-md-3 offset-0 ">
+              <img data-ng-src="{{apiUrl + tabModalidadeSelecionada.conteudo.imagem.linkDownload}}" alt="Título da Notícia" class="img-responsive " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descrição da imagem - Texto da descrição curta"></img>
+            </div>
+            <div class="col-md-9 textjustify slim dark ">
+              <div class="section-head ">
+                <h4 class="section-title-sub normal" data-ng-bind="tabModalidadeSelecionada.conteudo.titulo"></h4>
+              </div>
+              <article data-ng-bind="tabModalidadeSelecionada.conteudo.chamada"></article>
+            </div>
+            <div class="clearfix"></div>          
+          </div>
+
+        <div class="line3"></div>             
+          <ng-include src="'/extranetead-portal/partials/nivel-ensino/abas_modalidade_selecionada'">
+          </ng-include>
+
+        </div>
+      </div>
+    </div>
+    <!-- Fim Corpo Tab -->
+  </div>

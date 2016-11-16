@@ -1,0 +1,9 @@
+{
+	"T_GESTAO_USUARIO": "Gerenciar Usuários",
+	"T_CAD_USUARIO": "Incluir Usuário",
+	"T_EDI_USUARIO": "Editar Usuário",
+	"T_APROVACAO_USUARIO": "Aprovação Usuários",
+	"BTN_INCLUIR_USUARIO": "Incluir Usuário",
+	"BTN_APROVAR_SOLICITACAO": "Aprovação",
+	"CBX_DEPARTAMENTO": "Para gerenciar os usuários selecione um departamento"
+}

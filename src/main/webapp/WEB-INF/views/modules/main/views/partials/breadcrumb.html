@@ -1,0 +1,10 @@
+ <a class="homebtn left" data-ng-href="{{systemUri.home()}}"></a>
+    <div class="left">
+        <ul class="bcrumbs" style="display: flex;">
+            <div data-ng-repeat="page in navegacoes track by $index">
+                <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                <li><a data-ng-href="{{$last ? '' : page.url}}" data-ng-class="{'active': $last}">{{page.display}}</a></li>
+            </div>
+        </ul>
+    </div>
+
